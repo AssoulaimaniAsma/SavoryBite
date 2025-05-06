@@ -1,0 +1,321 @@
+.cart-page .tables-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap:20px;
+    padding-top: 2%;
+}
+
+.cart-page .Product,
+.cart-page .TotalPrice {
+    border-collapse: collapse;
+    display: table;
+    flex-grow: 1;
+}
+
+.cart-page .Product {
+    width: 45%; /* Adjust these as needed */
+}
+
+.cart-page .TotalPrice {
+    width: 25%;
+}
+  
+  /* =========================
+   Product Table
+   ========================= */
+   .cart-page .tables-container table {
+    width: 100%;  /* Ensures tables are responsive */
+}
+.cart-page .Product {
+    margin-right: 10px;
+    display: table;  /* Ensures it's treated as a table */
+    border-collapse: collapse;
+    width: auto;
+    min-width: 40%;
+    flex:none;
+  }
+  
+  .cart-page .Product th,
+  .cart-page .Product td {
+    padding: 0.75rem; /* Padding for better readability */
+    text-align: center;
+  }
+  
+  .cart-page .Product th {
+    background-color: #FD4C2A;
+    font-size: 1.1rem; /* Medium font size for table headers */
+  }
+  
+  .cart-page .Product td {
+    font-size: 1rem; /* Medium font size for table content */
+  }
+  
+  .cart-page .Product .picProd {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 150px;
+  }
+  
+  .cart-page .Product .picProd img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  /* =========================
+     Total Price Table
+     ========================= */
+  .cart-page .TotalPrice {
+    display: table;  /* Ensures it's treated as a table */
+    border-collapse: collapse;
+    width: 20% !important;
+    flex: none;
+}
+  
+  .cart-page .TotalPrice th {
+    background-color: #FD4C2A;
+    font-size: 1.1rem; /* Medium font size for table headers */
+  }
+  
+  .cart-page .TotalPrice td {
+    padding: 0.75rem; /* Padding for better readability */
+    font-size: 1rem; /* Medium font size for table content */
+  }
+  
+  .cart-page .TotalPrice .footTable2 {
+    background-color: #FD4C2A;
+    color: white;
+  }
+  
+  /* =========================
+     General Table Adjustments
+     ========================= */
+  .cart-page .Product td,
+  .cart-page .TotalPrice td {
+    text-align: center;
+    padding: 0.75rem;
+  }
+  
+  .cart-page .Product th,
+  .cart-page .TotalPrice th {
+    padding: 1rem;
+  }
+  
+  
+/* =========================
+     SECOND PART – Recommendations
+     ========================= */
+  .cart-page #SecondPart {
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: #fdf4f4;
+    border-top: 2px solid #f3c1b8;
+  }
+  
+  .cart-page .h2content5 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #FD4C2A;
+    margin-bottom: 2rem;
+  }
+  
+  .cart-page .imageContent2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.cart-page .imageItem2 {
+    width: 270px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease;
+    position: relative;
+  }
+  
+  .cart-page .imageItem2:hover {
+    transform: translateY(-5px);
+  }
+  
+  .cart-page .imageItem2 img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .cart-page .discountBadge2 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #FD4C2A;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    z-index: 2;
+  }
+  
+  .cart-page .nameImg2 {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    color: #333;
+  }
+  
+  .cart-page .PriceContainer2 {
+    margin: 10px 0;
+  }
+  
+  .cart-page .oldPrice2 {
+    font-size: 0.9rem;
+    color: #999;
+    text-decoration: line-through;
+    margin-right: 8px;
+  }
+  
+  .cart-page .newPrice2 {
+    font-weight: bold;
+    color: #FD4C2A;
+  }
+  
+  .cart-page .AddToCart2 {
+    margin-top: 10px;
+  }
+  
+  .cart-page .Add2 {
+    background-color: #fff;
+    border: 2px solid #FD4C2A;
+    color: #FD4C2A;
+    font-size: 1.2rem;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+  
+  .cart-page .Add2:hover {
+    background-color: #FD4C2A;
+    color: white;
+  }
+  
+  /* =========================
+     EMPTY CART STATE
+     ========================= */
+  .emptyCartContainer {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .emptyCartContainer h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .emptyCartContainer p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  .emptyCartContainer .startShoppingBtn {
+    padding: 12px 25px;
+    font-size: 1rem;
+    background-color: #FD4C2A;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .emptyCartContainer .startShoppingBtn:hover {
+    background-color: #000000;
+  }
+  
+  .emptyCartContainer .h2content5 {
+    margin-top: 50px;
+    font-size: 1.5rem;
+    color: #222;
+  }
+  
+  .emptyCartContainer .imageContent2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .emptyCartContainer .imageItem2 {
+    width: 200px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .emptyCartContainer .discountBadge2 {
+    position: relative;
+    top: -10px;
+    left: 0;
+    background-color: #e53935;
+    color: white;
+    font-size: 0.9rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  
+  .emptyCartContainer .nameImg2 {
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .emptyCartContainer .PriceContainer2 {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 5px 0;
+  }
+  
+  .emptyCartContainer .oldPrice2 {
+    text-decoration: line-through;
+    color: #888;
+  }
+  
+  .emptyCartContainer .newPrice2 {
+    color: #4CAF50;
+    font-weight: bold;
+  }
+  
+  .emptyCartContainer .AddToCart2 {
+    margin-top: 10px;
+  }
+  
+  .emptyCartContainer .Add2 {
+    padding: 5px 10px;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1rem;
+  }
+  
+  .emptyCartContainer .Add2:hover {
+    background-color: #1565c0;
+  }
+  

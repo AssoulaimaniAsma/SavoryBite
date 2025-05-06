@@ -1,0 +1,24 @@
+.TableOrders{
+    text-align:center; 
+    border:1px solid black;
+    width:70vw;
+}
+.CustomerOrder{
+    font-weight:bold;
+    color : #FD4C2A;
+    font-size:2rem;
+}
+.thOrders{
+    background-color: #FD4C2A;
+}
+.trOrders{
+    border :1px solid black;
+}
+.divContentOrder{
+    margin-top:10% ;
+    justify-content:center;
+    align-items:center;
+    flex-direction: column;
+    display:flex;
+    width:100%;
+}

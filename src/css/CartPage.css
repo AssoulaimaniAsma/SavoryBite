@@ -1,0 +1,64 @@
+.Product{
+    width:50%;
+    height:auto;
+    border-radius:50px;
+    border-collapse: collapse;
+    position:absolute;
+    margin-left:50px;
+}
+.headTable{
+    background-color:#FD4C2A;
+    color :white ;
+    border:1px solid transparent;
+    height:50px;
+}
+th{
+    text-align:center;
+}
+td{
+    text-align:center;
+}
+tr{
+    border:1px solid rgb(214, 211, 211);
+    height:50px;
+}
+button {
+    border:none;
+    background-color:transparent;
+}
+
+.TotalPrice{
+    width:40%;
+    height:auto;
+    margin-left:850px;
+    border-collapse:collapse;
+}
+.tdContent{
+    padding-left:400px;
+}
+.tdContent1{
+    padding-left:430px;
+}
+.PriceContainer{
+    padding-left:60px;
+    display:flex;
+}
+.oldPrice{
+    text-decoration: line-through;
+    color:#FD4C2A;
+}
+.imageContent{
+    display:flex;
+    gap: 60px;
+}
+.imageItem{
+    text-align:center;
+    position:relative;
+}
+.discountBadge{
+    padding:3px;
+    margin-left:160px;
+    position:absolute;
+    background-color:#FD4C2A;
+    border-radius:5px;
+}

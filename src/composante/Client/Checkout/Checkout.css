@@ -1,0 +1,44 @@
+.CheckoutWrapper{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:90vh;
+}
+.CheckoutContent{
+    border:1px solid #FD4C2A;
+    text-align :center;
+    width:1000px;
+    height:400px;
+    margin:0;
+    padding :80px;
+    border-radius:20px;
+}
+.h2content7{
+    font-size: 2rem;
+    font-weight :bold !important; 
+    margin-bottom:5px;
+}
+p{
+    margin-bottom :15px;
+}
+.VerifyIcon{
+    color:#10B981;
+    display:inline-block;
+    font-size:80px;
+    margin-bottom:45px;
+}
+.NavigateHome{
+    background-color : #FD4C2A;
+    color : white;
+    padding:10px;
+    border-radius:25px;
+    font-weight :bold;
+}
+.NavigateOrder{
+    border :1px solid #FD4C2A;
+    color : #FD4C2A;
+    border-radius:25px;
+    margin-left:30px;
+    padding :10px;
+    font-weight :bold;
+}

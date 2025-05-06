@@ -1,0 +1,32 @@
+
+.EditDiv{
+    align-items: center;
+    display: flex;
+    justify-content: space-between; /* ✅ Ajoute ça pour les espacer */
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.EditProfile{
+    background-color: #FD4C2A;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+.EditButton {
+    background-color:#FD4C2A;
+    color:white;
+    width:150px;
+    padding: 5px;
+    border-radius:25px;
+}
+
+.PaymentLink , .addressLink{
+    color:#FD4C2A;
+    text-decoration:underline;
+    display:block;
+    padding-top:15px;
+}
+.Address, .Payment{
+    padding-top:15px;
+}

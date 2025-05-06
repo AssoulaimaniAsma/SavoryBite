@@ -1,0 +1,26 @@
+#OrderPageContent{
+    margin-top:50px;
+    margin-left:100px;
+}
+#h2content6{
+    color:#FD4C2A;
+    font-weight:bold;
+    font-size:2rem;
+    margin-bottom:20px;
+}
+#OrderTable{
+    border:1px solid #FD4C2A;
+    width:90%;
+    height:auto;
+}
+#HeaderOrderContent{
+    background-color:#FD4C2A;
+    color:white;
+}
+#OrderTable td{
+    text-align:center;
+}
+#OrderTable > tr {
+    height:40px;
+    border: 1px solid #FD4C2A;
+}

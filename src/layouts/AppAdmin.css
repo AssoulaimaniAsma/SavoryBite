@@ -1,0 +1,11 @@
+/* App.css */
+.content {
+    margin-left: 0;
+    padding: 20px;
+    transition: margin-left 0.3s ease; /* Animation pour déplacer le contenu quand la sidebar est ouverte */
+  }
+  
+  .sidebar.open ~ .content {
+    margin-left: 250px; /* Décaler le contenu principal lorsque la sidebar est ouverte */
+  }
+  

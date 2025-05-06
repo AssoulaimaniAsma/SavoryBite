@@ -1,0 +1,31 @@
+
+.EditDiv{
+    align-items:center;
+    display:flex;
+    flex-wrap: wrap; 
+}
+.EditProfile{
+    background-color: #FD4C2A;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+.EditButton{
+    background-color:#FD4C2A;
+    color:white;
+    margin-left:650px;
+    width:150px;
+    padding: 5px;
+    margin-top:-30px;
+    border-radius:25px;
+}
+.PaymentLink , .addressLink{
+    color:#FD4C2A;
+    text-decoration:underline;
+    display:block;
+    padding-top:15px;
+}
+.Address, .Payment{
+    padding-top:15px;
+}

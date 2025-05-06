@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Oxygen');
+
+
+
+.mcdoButton {
+    width: 150px;                
+    height: 150px;               
+    display: flex;               /* flexbox for layout */
+    align-items: center;         /* Vertically center content */
+    justify-content: center;     /* Horizontally center content */
+    border: none;                
+    border-radius: 8px;          
+    background-color: #e50001;   
+    cursor: pointer;            /* Make it clickable */
+}
+
+
+.bkButton {
+    width: 150px;                
+    height: 150px;               
+    display: flex;               
+    align-items: center;         
+    justify-content: center;     
+    border: none;               
+    border-radius: 8px;          
+    background-color: #f9ad40;   
+    cursor: pointer;            
+}
+
+
+.kfcButton {
+    width: 150px;               
+    height: 150px;               
+    display: flex;              
+    align-items: center;         
+    justify-content: center;     
+    border: none;                
+    border-radius: 8px;        
+    background-color: #a3070b;   
+    cursor: pointer;           
+}
+
+.phutButton {
+    width: 150px;                
+    height: 150px;              
+    display: flex;               
+    align-items: center;         
+    justify-content: center;     
+    border: none;               
+    border-radius: 8px;          
+    background-color: #545350;  
+    cursor: pointer;            
+}
+
+
+.mcdoButton img, .bkButton img, .kfcButton img, .phutButton img, .dominosButton img {
+    width: 150px;                 
+    height: 150px;
+    object-fit: contain;         
+}
+body {
+    font-family: 'Oxygen';
+    position: relative;
+    z-index: 10;
+    background-color: none;
+  }

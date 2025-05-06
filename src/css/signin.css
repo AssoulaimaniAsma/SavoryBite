@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Oxygen');
+
+.loader-container {
+    display: flex;
+    justify-content: center;  
+    align-items: center;     
+    height: 95vh;            
+    width: 95vw;             
+    background-color: none; 
+}
+
+.spinner {
+    display: flex;            
+    justify-content: center;  
+    align-items: center;      
+    width: 100px;
+    height: 100px;
+}
+
+.loader-container img {
+    width: 100px;  /* Taille de l'image */
+    height: auto;
+    margin-left: 100px;
+}
+body {
+    font-family: 'Oxygen';
+  }
+  #image{
+    height:90%;
+    justify-content: center;  
+    align-items: center;
+}

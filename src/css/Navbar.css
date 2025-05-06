@@ -1,0 +1,23 @@
+.nav-item {
+    position: relative;
+    padding: 10px 20px; /* Ajoute de l'espace autour du texte */
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-item::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0%;
+    height: 100%;
+    background-color: #FD4C2A; /* Couleur orange */
+    border-radius: 50px; /* Fait un ovale */
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease-in-out;
+    z-index: -1;
+}
+
+.nav-item:hover::before {
+    width: 100%;
+}

@@ -1,0 +1,98 @@
+[
+    {
+      "id": "x",
+      "image": "image/food.jpg",
+      "name": "item y",
+      "oldPrice": 230,
+      "newPrice": 200,
+      "className":"imageContent"
+    },
+    {
+      "id": "y",
+      "image": "image/food.jpg",
+      "name": "item y",
+      "oldPrice": 230,
+      "newPrice": 200,
+      "className":"imageContent"
+    },
+    {
+      "id": "z",
+      "image": "image/food.jpg",
+      "name": "item y",
+      "oldPrice": 230,
+      "newPrice": 200 ,
+      "className":"imageContent"  
+    },
+    {
+      "id": "b",
+      "image": "image/food.jpg",
+      "name": "item y",
+      "oldPrice": 230,
+      "newPrice": 200,
+      "className":"imageContent"
+    },
+    {
+      "id": "a",
+      "image": "image/food.jpg",
+      "name": "item y",
+      "oldPrice": 230,
+      "newPrice": 200,
+      "className":"imageContent1"
+    },
+    {
+      "id": "c",
+      "image": "image/food.jpg",
+      "name": "item y",
+      "oldPrice": 230,
+      "newPrice": 200,
+      "className":"imageContent1"
+    },
+    {
+      "id": "d",
+      "image": "image/food.jpg",
+      "name": "item y",
+      "oldPrice": 230,
+      "newPrice": 200,
+      "className":"imageContent1"
+    },
+    {
+      "id": "e",
+      "image": "image/food.jpg",
+      "name": "item y",
+      "oldPrice": 230,
+      "newPrice": 200,
+      "className":"imageContent1"
+    },
+    {
+      "id": "f",
+      "image": "image/food.jpg",
+      "name": "item y",
+      "oldPrice": 230,
+      "newPrice": 200,
+      "className":"imageContent1"
+    },
+    {
+      "id": "j",
+      "image": "image/food.jpg",
+      "name": "item y",
+      "oldPrice": 230,
+      "newPrice": 200,
+      "className":"imageContent1"
+    },
+    {
+      "id": "h",
+      "image": "image/food.jpg",
+      "name": "item z",
+      "oldPrice": 200,
+      "newPrice": 140,
+      "className":"imageContent1"
+    },
+    {
+      "id": "i",
+      "image": "image/food.jpg",
+      "name": "item z",
+      "oldPrice": 200,
+      "newPrice": 140,
+      "className":"imageContent1"
+    }
+  ]
