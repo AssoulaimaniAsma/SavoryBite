@@ -209,28 +209,35 @@ const [showModal2, setShowModal2] = useState(false);
           <p className="adtext3 ">you—quick, easy, and hassle-free!</p>
 
           <Link
-            to="/Our_Menu"
-            className="explore hover:text-white group hover:bg-[#FD4C2A]"
-          >
-            <span className="absolute left-0 block w-full h-0 transition-all bg-[#FD4C2A] opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
-            <span className="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                ></path>
-              </svg>
-            </span>
-            <span className="relative">Explore</span>
-          </Link>
+  to="/client/Our_Menu"
+  className="explore relative inline-flex items-center px-12 py-3 overflow-hidden text-lg font-medium text-black border-2 border-[#FD4C2A] group"
+>
+  {/* Fond animé au survol - maintenant avec z-index plus bas */}
+  <span className="absolute left-0 w-0 h-full transition-all duration-300 ease-out bg-[#FD4C2A] group-hover:w-full -z-10"></span>
+  
+  {/* Texte "Explore" - maintenant avec z-index plus haut */}
+  <span className="relative text-[#FD4C2A] transition-colors duration-300 group-hover:text-white z-10">
+    Explore
+  </span>
+  
+  {/* Flèche animée */}
+  <span className="absolute right-0 flex items-center justify-center w-10 h-full transform translate-x-full group-hover:translate-x-0 transition-all duration-300 ease-in-out bg-[#FD4C2A] z-10">
+    <svg
+      className="w-5 h-5 text-white"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M14 5l7 7m0 0l-7 7m7-7H3"
+      ></path>
+    </svg>
+  </span>
+</Link>
         </div>
       </div>
 

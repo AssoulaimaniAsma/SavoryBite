@@ -290,10 +290,10 @@
     position: relative; 
     z-index: 10;
 }
-#h2content2{
+.Section5 #h2content2{
     font-size: 2rem;
     font-weight: bold !important; 
-    color: #DC2626; 
+    color: #FD4C2A; 
     margin-bottom: 1.5rem;
     margin-left:7%;
 }
