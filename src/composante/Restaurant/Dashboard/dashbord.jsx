@@ -219,7 +219,7 @@ const Dashboard = () => {
             </thead>
             <tbody>
               {orderStatistics.topBigOrders.map((order) => (
-                <tr key={order.id}>
+                <tr key={order.id}> 
                   <td className="border px-4 py-2">{order.id}</td>
                   <td className="border px-4 py-2">{order.courier?.fullName || "N/A"}</td>
                   <td className="border px-4 py-2">{order.totalPrice.toFixed(2)} DH</td>
