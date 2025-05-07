@@ -280,6 +280,10 @@ const [restaurantToDelete, setRestaurantToDelete] = useState(null);
         
       
   return (
+    <div className="ml-80 pl-8 pr-8 pt-16 w-[calc(100%-320px)] min-h-screen
+              lg:pl-12 lg:pr-12
+              md:ml-72 md:w-[calc(100%-288px)]
+              sm:ml-0 sm:w-full sm:px-4">
     <div className="DivTableRestaurant">
       <ConfirmPopup
         isOpen={showDeletePopup}
@@ -448,6 +452,7 @@ const [restaurantToDelete, setRestaurantToDelete] = useState(null);
                 </div>
             </div>
             )}
+    </div>
     </div>
   );
 }
