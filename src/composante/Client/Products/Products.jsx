@@ -4,48 +4,60 @@ import { CartContext } from "../CartContext/CartContext";
 export default function Products({ products, updateQuantity, removeItem }) {
   const {addToCart} = useContext(CartContext);
   return (
-    <table className="Product">
-      <thead>
-        <tr className="headTable">
-          <th>Product</th>
-          <th>Price</th>
-          <th>Quantity</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody className="bodyTab2">
-        {products.map((item) => {
-          if(!item || !item.food) return null;
-          return(
-          <tr key={item.itemID}>
-            <td className="picProd">
+<table className="w-[50%] rounded-[25px] overflow-hidden border-separate border-spacing-0 mr-[10px] shadow-lg">
+  <thead>
+    <tr className="bg-[#FD4C2A] text-white">
+      <th className="p-4 text-[1.1rem] text-center">Product</th>
+      <th className="p-4 text-[1.1rem] text-center">Price</th>
+      <th className="p-4 text-[1.1rem] text-center">Quantity</th>
+      <th className="p-4 text-[1.1rem] text-center">Total</th>
+    </tr>
+  </thead>
+  <tbody className="[&_td]:p-8 [&_td]:text-center [&_td]:text-[1rem]">
+    {products.map((item) => {
+      if (!item || !item.food) return null;
+      return (
+        <tr key={item.itemID} className="border-b border-gray-200 hover:bg-gray-50">
+          <td className="flex items-center gap-3 pl-4">
             {removeItem && (
-                <button onClick={() => removeItem(item.itemID)} className="removeBtn">X</button>
-            )}
-              <img src={item.food.image} alt={item.food.title} width="50" height="50" />
-              <span>{item.food.title}</span>
-            </td>
-            <td>{Number(item.food.discountedPrice).toFixed(2)}DH</td>
-            <td className="quantityContent">
               <button
-                className="DecQuantity"
+                onClick={() => removeItem(item.itemID)}
+                className="text-red-500 font-bold text-lg mr-2 hover:text-red-700"
+              >
+                X
+              </button>
+            )}
+            <img
+              src={item.food.image}
+              alt={item.food.title}
+              className="w-[50px] h-[50px] object-cover rounded-md"
+            />
+            <span className="text-left">{item.food.title}</span>
+          </td>
+          <td>{Number(item.food.discountedPrice).toFixed(2)} DH</td>
+          <td>
+            <div className="flex justify-center items-center">
+              <button
+                className="px-2 py-1  rounded-full  text-lg"
                 onClick={() => updateQuantity(item.itemID, -1)}
               >
                 -
               </button>
-              <span>{item.quantity}</span>
+              <span className="mx-3">{item.quantity}</span>
               <button
-                className="IncQuantity"
+                className="px-2 py-1  rounded-full  text-lg"
                 onClick={() => updateQuantity(item.itemID, 1)}
               >
                 +
               </button>
-            </td>
-            <td>{(Number(item.food.discountedPrice) * item.quantity).toFixed(2)} DH</td>
-          </tr>
-          );
-})}
-      </tbody>
-    </table>
+            </div>
+          </td>
+          <td>{(Number(item.food.discountedPrice) * item.quantity).toFixed(2)} DH</td>
+        </tr>
+      );
+    })}
+  </tbody>
+</table>
+
   );
 }

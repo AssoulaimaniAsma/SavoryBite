@@ -4,108 +4,93 @@ import React, { createContext, useState, useEffect } from "react";
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const userId = localStorage.getItem("userId");
   const [cart, setCart] = useState([]);
-  const [showAlert, setShowAlert] = useState(false);
   const [orderDetails, setOrderDetails] = useState({ total: 0 });
-  const [currentItemName, setCurrentItemName] = useState("test"); // Nom de l'item
-  const [isAdding, setIsAdding] = useState(false); // Nouveau state pour contrôler les ajouts
+  const [showAlert, setShowAlert] = useState(false);
+  const [currentItemName, setCurrentItemName] = useState("test");
+  const [isAdding, setIsAdding] = useState(false);
 
-  // UseEffect pour afficher l'alerte une seule fois
+  // Effet pour log l'alerte
   useEffect(() => {
     if (showAlert && currentItemName !== "test") {
-      console.log("Alerte affichée avec l'élément :", currentItemName);
-      // L'alerte peut être affichée ici, ou gérer d'autres actions
+      console.log("Alerte affichée avec :", currentItemName);
     }
-  }, [currentItemName, showAlert]); // Dépend de currentItemName et showAlert
+  }, [showAlert, currentItemName]);
 
   const fetchCartDetails = async () => {
     const token = localStorage.getItem("authToken");
     if (!token) return;
 
     try {
-      // Fetch total du panier
-      const totalResponse = await fetch("http://localhost:8080/user/cart/total", {
-        method: "GET",
+      const totalRes = await fetch("http://localhost:8080/user/cart/total", {
         headers: { Authorization: `Bearer ${token}` },
       });
-      const total = await totalResponse.json();
+      const total = await totalRes.json();
       setOrderDetails({ total });
 
-      // Fetch items du panier
-      const cartResponse = await fetch("http://localhost:8080/user/cart/", {
-        method: "GET",
+      const cartRes = await fetch("http://localhost:8080/user/cart/", {
         headers: { Authorization: `Bearer ${token}` },
       });
-      const cartData = await cartResponse.json();
+      const cartData = await cartRes.json();
       setCart(cartData);
-    } catch (error) {
-      console.error("Failed to fetch cart details:", error);
+    } catch (err) {
+      console.error("Erreur lors du fetch du panier:", err);
     }
   };
 
-  // Fonction d'ajout au panier
   const AddToCart = async (item) => {
     if (isAdding) return;
     setIsAdding(true);
-  
+
     try {
-      console.log("Adding item:", item.title);
       const token = localStorage.getItem("authToken");
       if (!token) {
-        console.error("No token found");
+        console.error("Utilisateur non connecté");
+        setShowAlert(true);
+        setCurrentItemName("non connecté");
+        setTimeout(() => setShowAlert(false), 3000);
         return;
       }
-  
-      // Mettre à jour le nom de l'item et afficher l'alerte
+
       setCurrentItemName(item.title);
       setShowAlert(true);
-  
-      // Trouver l'élément existant dans le panier
+
       const existingItem = cart.find((i) => i.food?.id === item.id);
-      console.log("Existing item in cart:", existingItem);
-  
-      try {
-        if (existingItem) {
-          // Si l'élément existe déjà, mettre à jour la quantité
-          await updateQuantity(existingItem.itemID, 1);
-        } else {
-          // Sinon, ajouter le nouvel élément
-          const res = await fetch(`http://localhost:8080/user/cart/addItem?foodID=${item.id}`, {
+
+      if (existingItem) {
+        await updateQuantity(existingItem.itemID, 1);
+      } else {
+        const res = await fetch(
+          `http://localhost:8080/user/cart/addItem?foodID=${item.id}`,
+          {
             method: "POST",
             headers: {
               Authorization: `Bearer ${token}`,
               "Content-Type": "application/json",
             },
-          });
-  
-          if (!res.ok) {
-            const errorMsg = await res.text();
-            throw new Error(`Failed to add item to cart: ${errorMsg}`);
           }
-  
-          // Actualiser les détails du panier
-          await fetchCartDetails();
+        );
+
+        if (!res.ok) {
+          const msg = await res.text();
+          throw new Error(`Ajout échoué: ${msg}`);
         }
-      } catch (error) {
-        console.error("Failed to add item to cart:", error);
-        setShowAlert(false);
-        throw error; // Propager l'erreur pour le catch externe
+
+        await fetchCartDetails();
       }
-  
-      // Cacher l'alerte après 3 secondes
+
       setTimeout(() => {
         setShowAlert(false);
         setCurrentItemName("");
       }, 3000);
-  
     } catch (error) {
-      console.error("Error in AddToCart:", error);
+      console.error("Erreur dans AddToCart:", error);
+      setShowAlert(false);
     } finally {
       setIsAdding(false);
     }
   };
-  // Update cart item quantity
+
   const updateQuantity = async (itemId, change) => {
     const token = localStorage.getItem("authToken");
     if (!token) return;
@@ -118,34 +103,60 @@ export const CartProvider = ({ children }) => {
 
       const res = await fetch(endpoint, {
         method: "PUT",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
 
-      if (!res.ok) throw new Error("Failed to update item quantity");
+      if (!res.ok) throw new Error("Échec mise à jour quantité");
 
-      // Re-fetch cart details après la mise à jour
-      fetchCartDetails();
-    } catch (error) {
-      console.error("Failed to update item quantity:", error);
+      await fetchCartDetails();
+    } catch (err) {
+      console.error("Erreur maj quantité:", err);
     }
   };
 
-  // Fetch cart details au montage du composant
+  const removeItem = async (itemId) => {
+    const token = localStorage.getItem("authToken");
+    if (!token) return;
+
+    try {
+      const res = await fetch(
+        `http://localhost:8080/user/cart/${itemId}/delete`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!res.ok) {
+        const msg = await res.text();
+        throw new Error("Échec suppression: " + msg);
+      }
+
+      await fetchCartDetails();
+    } catch (err) {
+      console.error("Erreur suppression item:", err);
+    }
+  };
+
   useEffect(() => {
     fetchCartDetails();
   }, []);
 
   return (
-    <CartContext.Provider value={{
-      cart,
-      orderDetails,
-      AddToCart,
-      updateQuantity,
-      showAlert,           // Ajout de cette valeur
-      currentItemName      // Et de celle-ci
-    }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        orderDetails,
+        AddToCart,
+        updateQuantity,
+        removeItem,
+        showAlert,
+        currentItemName,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

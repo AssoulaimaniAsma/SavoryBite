@@ -2,15 +2,16 @@ import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Products from "../Products/Products";
 import { CartContext } from "../CartContext/CartContext";
-import "./CartPage.css";
+//import "./CartPage.css";
 
 function CartPage() {
   const navigate = useNavigate();
   const [foods, setFoods] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [recommendation, setRecommandation] = useState([]);
 
-  const { cart, AddToCart, orderDetails, updateQuantity, removeItem } = useContext(CartContext);
+  const { cart, AddToCart, orderDetails,updateQuantity , removeItem, clearCart } = useContext(CartContext);
   const isLoggedIn = localStorage.getItem("authToken");
 
   useEffect(() => {
@@ -26,7 +27,7 @@ function CartPage() {
           },
         });
         const data = await res.json();
-        setFoods(data);
+        setRecommandation(data);
         setLoading(false);
       } catch (err) {
         setError("Failed to fetch data");
@@ -41,7 +42,7 @@ function CartPage() {
   // Fetch cart when the component mounts
   const fetchCart = async () => {
     const token = localStorage.getItem("authToken");
-    if (!token) return navigate("/client/login");
+    if (!token) return navigate("/client/signin");
 
     try {
       const res = await fetch("http://localhost:8080/user/cart/", {
@@ -50,10 +51,16 @@ function CartPage() {
           Authorization: `Bearer ${token}`,
         },
       });
-      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      const text = await res.text();
+      const data = text.trim() ? JSON.parse(text) : [];
+
       setFoods(data); // Update the foods state with cart data
       setLoading(false);
     } catch (err) {
+      console.error("Failed to fetch cart details:",err);
       setError("Failed to fetch data");
       setLoading(false);
     }
@@ -63,51 +70,93 @@ function CartPage() {
     fetchCart(); // Fetch cart data when component mounts
   }, []);
 
+  const handlePlaceOrder = async (e) => {
+    e.preventDefault();
+  
+      const token = localStorage.getItem("authToken");
+      if (!token) return navigate("/client/signin");
+  
+      try {
+        const res1 = await fetch("http://localhost:8080/user/orders/placeOrders", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
+  
+        if (res1.ok) {
+          const text = await res1.text();
+          console.log("order is placed");
+          navigate("/client/OrderHistory");
+          
+        }
+      } catch (err) {
+        console.error("Error in handlePlaceOrder:", err);
+      }
+  };
 
   // If cart is empty, show a message
   if (cart.length === 0) {
     return (
-      <div className="emptyCartContainer">
-        <h2>Your cart is empty</h2>
-        <p>Looks like you haven’t added anything yet.</p>
-        <button className="startShoppingBtn" onClick={() => navigate("/products")}>
+      <div className="text-center py-[50px] px-[20px] bg-[#f9f9f9]">
+        <h2 className="text-[2rem] mb-[10px] text-[#333]">Your cart is empty</h2>
+        <p className="text-[1.1rem] text-[#666] mb-[30px]">Looks like you haven't added anything yet.</p>
+        <button 
+          className="px-[25px] py-[12px] bg-[#FD4C2A] text-white rounded-[8px] text-[1rem] hover:bg-black transition-colors duration-300 border-none cursor-pointer"
+          onClick={() => navigate("/client/Our_Menu")}
+        >
           Start Shopping
         </button>
-
-        <h2 className="h2content5">You May Also Like</h2>
-        <div className="imageContent2">
-          {loading ? (
-            <div>Loading...</div>
-          ) : error ? (
-            <div>{error}</div>
-          ) : (
-            foods.map((item) => (
-              <div className="imageItem2" key={item.id}>
-                <span className="discountBadge2">{Number(item.discount)}%</span>
-                <img src={item.image} alt={item.title} />
-                <div className="nameImg2">{item.title}</div>
-                <div className="PriceContainer2">
-                  <span className="oldPrice2">
-                    {(Number(item.discountedPrice) / (1 - Number(item.discount) / 100)).toFixed(2)}DH
-                  </span>
-                  <span className="newPrice2">{Number(item.discountedPrice).toFixed(2)}DH</span>
-                </div>
-                <div className="AddToCart2">
-                  <button
-                    className="Add2"
-                    onClick={() => {
-                      if (isLoggedIn) {
-                        AddToCart(item);
-                      }
-                    }}
-                  >
-                    +
-                  </button>
-                </div>
+  
+        <div className="mt-8 p-8 bg-[#fdf4f4] border-t-2 border-[#f3c1b8]">
+      <h2 className="text-3xl font-bold text-center text-[#FD4C2A] mb-8">You May Also Like</h2>
+      
+      {loading ? (
+        <div>Loading...</div>
+      ) : error ? (
+        <div>{error}</div>
+      ) : (
+        <div className="flex flex-wrap justify-center gap-8">
+          {recommendation.map((item) => (
+            <div 
+              key={item.id}
+              className="w-[270px] bg-white rounded-2xl shadow-md overflow-hidden text-center transition-transform duration-300 hover:-translate-y-1 relative"
+            >
+              <span className="absolute top-2 right-2 bg-[#FD4C2A] text-white px-2 py-1 rounded text-sm z-10">
+                {Number(item.discount)}%
+              </span>
+              <img 
+                src={item.image} 
+                alt={item.title} 
+                className="w-full h-[280px] object-cover border-b border-[#eee]"
+              />
+              <div className="text-lg mt-2 text-gray-800">{item.title}</div>
+              <div className="my-2">
+                <span className="text-sm text-gray-500 line-through mr-2">
+                  {(Number(item.discountedPrice) / (1 - Number(item.discount) / 100)).toFixed(2)}DH
+                </span>
+                <span className="font-bold text-[#FD4C2A]">
+                  {Number(item.discountedPrice).toFixed(2)}DH
+                </span>
               </div>
-            ))
-          )}
+              <div className="mt-2 mb-4">
+                <button
+                  className="w-8 h-8 bg-white border-2 border-[#FD4C2A] text-[#FD4C2A] rounded-full text-xl transition-colors duration-200 hover:bg-[#FD4C2A] hover:text-white"
+                  onClick={() => {
+                    if (isLoggedIn) {
+                      AddToCart(item);
+                    }
+                  }}
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
+      )}
+    </div>
       </div>
     );
   }
@@ -118,81 +167,131 @@ function CartPage() {
   const total = subtotal + shipping;
 
   return (
-    <div className="cart-page">
-      <div id="firstPart" className="tables-container">
-        <div className="Product">
-          <Products
-            products={cart}
-            UpdateQuantity={updateQuantity}
-            removeItem={removeItem}
-          />
-        </div>
-        <table className="TotalPrice">
-          <thead>
-            <tr className="headTable2">
-              <th>Cart Total</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody className="bodyTable2">
-            <tr>
-              <td>Subtotal</td>
-              <td>{subtotal.toFixed(2)} MAD</td>
-            </tr>
-            <tr>
-              <td>Shipping</td>
-              <td>{shipping.toFixed(2)} MAD</td>
-            </tr>
-            <tr>
-              <td>Total</td>
-              <td>{total.toFixed(2)} MAD</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td className="footTable2" colSpan="2">Place Order</td>
-            </tr>
-          </tfoot>
-        </table>
+    <div className="flex flex-col">
+    {/* First Part - Tables Container */}
+    <div className="flex justify-center w-full gap-5 pt-5">
+      {/* Products Table */}
+      <div className="w-[45%] rounded-2xl overflow-hidden">
+        <Products
+          products={cart}
+          updateQuantity={updateQuantity}
+          removeItem={removeItem}
+        />
       </div>
-
-      <div id="SecondPart">
-        <h2 className="h2content5">You May Also Like</h2>
-        <div className="imageContent2">
-          {loading ? (
-            <div>Loading...</div>
-          ) : error ? (
-            <div>{error}</div>
-          ) : (
-            foods.map((item) => (
-              <div className="imageItem2" key={item.id}>
-                <span className="discountBadge2">{Number(item.discount)}%</span>
-                <img src={item.image} alt={item.title} />
-                <div className="nameImg2">{item.title}</div>
-                <div className="PriceContainer2">
-                  <span className="oldPrice2">
-                    {(Number(item.discountedPrice) / (1 - Number(item.discount) / 100)).toFixed(2)}DH
-                  </span>
-                  <span className="newPrice2">{Number(item.discountedPrice).toFixed(2)}DH</span>
-                </div>
-                <div className="AddToCart2">
-                  <button
-                    className="Add2"
-                    onClick={() => {
-                      if (isLoggedIn) {
-                        AddToCart(item);
-                      }
-                    }}
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-            ))
-          )}
-        </div>
-      </div>
+  
+      {/* Total Price Table */}
+      <table className="w-[25%] rounded-2xl overflow-hidden">
+        <thead>
+          <tr className="bg-[#FD4C2A]">
+            <th colSpan={2} className="p-4 text-xl text-center">Cart Total</th>
+          </tr>
+        </thead>
+        <tbody className="[&_td]:p-3 [&_td]:text-center">
+          <tr>
+            <td>Subtotal</td>
+            <td className="tdOrderDetails1" colSpan={2}>
+              {cart.reduce((sum, item) => sum + item.food.discountedPrice * item.quantity, 0).toFixed(2)} MAD
+            </td>
+          </tr>
+          <tr>
+            <td>Shipping</td>
+            <td className="tdOrderDetails1" colSpan={2}>
+              {cart.reduce((sum, item) => {
+                if (item.food && item.food.restaurant) {
+                  const restaurantId = item.food.restaurant.id;
+                  if (!sum.restaurants[restaurantId]) {
+                    sum.restaurants[restaurantId] = item.food.restaurant.shippingFees;
+                    sum.total += item.food.restaurant.shippingFees;
+                  }
+                }
+                return sum;
+              }, { restaurants: {}, total: 0 }).total.toFixed(2)} MAD
+            </td>
+          </tr>
+          <tr>
+            <td>Total</td>
+            <td className="tdOrderDetails1" colSpan={2}>
+              {(
+                cart.reduce((sum, item) => sum + item.totalPrice, 0) + 
+                cart.reduce((sum, item) => {
+                  if (item.food && item.food.restaurant) {
+                    const restaurantId = item.food.restaurant.id;
+                    if (!sum.restaurants[restaurantId]) {
+                      sum.restaurants[restaurantId] = item.food.restaurant.shippingFees;
+                      sum.total += item.food.restaurant.shippingFees;
+                    }
+                  }
+                  return sum;
+                }, { restaurants: {}, total: 0 }).total
+              ).toFixed(2)} MAD
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td className="bg-[#FD4C2A] text-white p-3 text-center" colSpan="2">
+              <button 
+                onClick={handlePlaceOrder}
+                className="w-full py-2 font-medium text-white"
+              >
+                Place Order
+              </button>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
+  
+    {/* Second Part - Recommendations */}
+    <div className="mt-8 p-8 bg-[#fdf4f4] border-t-2 border-[#f3c1b8]">
+      <h2 className="text-3xl font-bold text-center text-[#FD4C2A] mb-8">You May Also Like</h2>
+      
+      {loading ? (
+        <div>Loading...</div>
+      ) : error ? (
+        <div>{error}</div>
+      ) : (
+        <div className="flex flex-wrap justify-center gap-8">
+          {recommendation.map((item) => (
+            <div 
+              key={item.id}
+              className="w-[270px] bg-white rounded-2xl shadow-md overflow-hidden text-center transition-transform duration-300 hover:-translate-y-1 relative"
+            >
+              <span className="absolute top-2 right-2 bg-[#FD4C2A] text-white px-2 py-1 rounded text-sm z-10">
+                {Number(item.discount)}%
+              </span>
+              <img 
+                src={item.image} 
+                alt={item.title} 
+                className="w-full h-[280px] object-cover border-b border-[#eee]"
+              />
+              <div className="text-lg mt-2 text-gray-800">{item.title}</div>
+              <div className="my-2">
+                <span className="text-sm text-gray-500 line-through mr-2">
+                  {(Number(item.discountedPrice) / (1 - Number(item.discount) / 100)).toFixed(2)}DH
+                </span>
+                <span className="font-bold text-[#FD4C2A]">
+                  {Number(item.discountedPrice).toFixed(2)}DH
+                </span>
+              </div>
+              <div className="mt-2 mb-4">
+                <button
+                  className="w-8 h-8 bg-white border-2 border-[#FD4C2A] text-[#FD4C2A] rounded-full text-xl transition-colors duration-200 hover:bg-[#FD4C2A] hover:text-white"
+                  onClick={() => {
+                    if (isLoggedIn) {
+                      AddToCart(item);
+                    }
+                  }}
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
   );
 }
 

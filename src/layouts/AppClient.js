@@ -27,6 +27,7 @@ import PaymentMethods from "../composante/Client/Payment/payment";
 import OrderHistory from "../composante/Client/OrderHistory/orderhistory";
 import ClientOrderNotifications from "../composante/Client/OrderHistory/NotificationClient";
 import OrderTracking from "../composante/Client/OrderTracking/ordertracking";
+import PersonalDetails from "../composante/Client/PersonalDetails//PersonalDetails";
 function AnimatedRoutes() {
   const location = useLocation();
   const signinRef = useRef(null);
@@ -51,6 +52,7 @@ function AnimatedRoutes() {
   const orderhistoryRef= useRef(null);
   const clientOrderRef= useRef(null);
   const ordertrackingRef= useRef(null);
+  const personalDetailsRef= useRef(null);
     return (
     <TransitionGroup>
       <CSSTransition 
@@ -66,7 +68,7 @@ function AnimatedRoutes() {
           location.pathname ==="/Our_Menu"  ? ourmenuRef:
           location.pathname === "/History" ? historyRef : 
           location.pathname ==="/SideBar"  ? ourmenuRef:
-          location.pathname ==="/Checkout"  ? checkoutRef:
+          location.pathname ==="/Checkout/:orderID"  ? checkoutRef:
           location.pathname ==="/ItemCard/:id"  ? itemCardRef:
           location.pathname==="/VerifyAccount" ? verifyRef:
           location.pathname==="/auth/ForgotPasswordForm" ? forgetRef:
@@ -78,6 +80,7 @@ function AnimatedRoutes() {
           location.pathname==="/client/restaurants/:id" ? forgetRef:
           location.pathname==="/client/ManagePayment" ? paymentRef:
           location.pathname==="/client/OrderHistory" ? orderhistoryRef:
+          location.pathname==="/client/completeOrder/:orderID" ? personalDetailsRef:
          // location.pathname==="/client/OrderHistory/NotificationClient" ? clientOrderRef:
          location.pathname==="/client/order/track/:orderID" ? ordertrackingRef:
           homeRef
@@ -94,7 +97,7 @@ function AnimatedRoutes() {
           location.pathname ==="/Our_Menu/:category"  ? ourmenuRef: 
           location.pathname === "/History" ? historyRef :
           location.pathname ==="/SideBar"  ? ourmenuRef:
-          location.pathname ==="/Checkout"  ? checkoutRef:
+          location.pathname ==="/Checkout/:orderID"  ? checkoutRef:
           location.pathname ==="/ItemCard/:id"  ? itemCardRef:
           location.pathname==="/VerifyAccount" ? verifyRef:
           location.pathname==="auth/ForgotPasswordForm" ? forgetRef:
@@ -106,6 +109,7 @@ function AnimatedRoutes() {
           location.pathname==="/client/restaurants/:id" ? forgetRef:
           location.pathname==="/client/ManagePayment" ? paymentRef:
           location.pathname==="/client/OrderHistory" ? orderhistoryRef:
+          location.pathname==="/client/completeOrder/:orderID" ? personalDetailsRef:
           location.pathname==="/client/order/track/:orderID" ? ordertrackingRef:
           //location.pathname==="/client/OrderHistory/NotificationClient" ? clientOrderRef:
           homeRef
@@ -121,7 +125,7 @@ function AnimatedRoutes() {
           <Route path="/client/Our_Menu" element={<Our_Menu />} />
           <Route path="/client/ItemCard/:id" element={<ItemCard />} />
           <Route path="/client/history/:userId" element={<History />} />
-          <Route path="/client/Checkout" element={<Checkout />}/>
+          <Route path="/client/Checkout/:orderID" element={<Checkout />}/>
           <Route path="/client/verifyAccount" element={<VerifyAccount />}/>
           <Route path="/auth/resetPassword" element={<ResetPasswordForm />}/>
           <Route path="/auth/ForgotPasswordForm" element={<ForgotPasswordForm />}/>
@@ -133,6 +137,7 @@ function AnimatedRoutes() {
           <Route path="/client/restaurants/:id" element={<FoodByRestaurant />}/>
           <Route path="/client/OrderHistory" element={<OrderHistory />}/>
           <Route path="/client/order/track/:orderID" element={<OrderTracking />} />
+          <Route path="/client/completeOrder/:orderID" element={<PersonalDetails />} />
           </Routes>
         </div>
       </CSSTransition>

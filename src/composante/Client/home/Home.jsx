@@ -100,8 +100,7 @@ const [showModal2, setShowModal2] = useState(false);
   }, []);
 
   const section1 = items.slice(0, 4);
-  const section2 = popular.slice(-8);
-
+  const section2 = popular.slice(0, 4);
   const { cart, AddToCart, showAlert, UpdateQuantity, currentItemName } =
     useContext(CartContext);
   const [panier, setPanier] = useState([]);
