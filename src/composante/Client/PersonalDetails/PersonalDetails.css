@@ -1,0 +1,252 @@
+.PersonalDetails{
+    width: 100%;
+    display:flex;
+    align-items: flex-start;
+    justify-content: center; /* centrer tout */
+    margin-top: 20px;
+    height:100vh;
+    gap:20px;
+} 
+@media (max-width: 768px) {
+    .PersonalDetails {
+        flex-direction: column; /* Stack tables vertically on smaller screens */
+        align-items: center; /* Center align the content */
+    }
+}
+.PersonalInformations{
+    border:1px solid #FD4C2A;
+    border-radius: 25px;
+    height:120px;
+    padding: 5px;
+    width:30%;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-left: 370px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+.head{
+    background-color: #FD4C2A;
+    width:100%;
+}
+.Addresses{
+    font-size: 1.5rem;
+}
+.Addressh2{
+    color:#FD4C2A;
+    font-weight: bold;
+    font-size: 2rem;
+    padding-bottom:20px;
+    padding-top: 30px;
+}
+.checkBox{
+    width: 20px;
+}
+.titreCheckBox{
+    display: flex;
+    font-size: 1.25rem;
+    gap:10px;
+    text-align: center;
+    align-items: center;
+}
+.submitAccButton{
+    align-items: center;
+    margin-left: 82px;
+    width:40%;
+    border-radius: 20px;
+    margin-top: 40px;
+}
+.AddAddressPayment{
+    background-color: #FD4C2A;
+    color:white;
+    border-radius: 20px;
+    font-size: 1.15rem;
+    padding:5px;
+}
+.submitButtonPayment{
+    background-color: #FD4C2A;
+    color:white;
+    border-radius: 20px;
+    font-size: 1.15rem;
+    padding:15px;
+}
+.submitButton, .AddAddress {
+  background-color: #FD4C2A;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.25rem;
+  padding: 10px 25px;
+  cursor: pointer;
+  white-space: nowrap;
+  max-width: 230px; /* <-- ajuste la largeur maximale si besoin */
+}
+.submitButton:hover, .AddAddress:hover, .AddAddressPayment:hover, .submitButtonPayment:hover{
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);
+    transform: translateY(1px);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+.AddAddress{
+  margin-left: 0;
+}
+
+.orderDetails{
+    width: 40%;
+    border-collapse: collapse;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: 270px;
+    table-layout: auto;
+
+}
+.tdOrderDetails{
+    text-align: center;
+}
+.tdOrderDetails1{
+  padding-left: 24%;
+}
+.DefaultCheckBox{
+    display:flex;
+    align-items: center;
+    gap:10px;
+}
+
+.DefaultCheckBox [type="checkbox"]{
+    width:20px;
+}
+
+.formcss {
+    margin-bottom:15px;
+}
+.DefaultCheckBox1{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.DefaultCheckBox1 label {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Adds space between checkbox and text */
+    cursor: pointer;
+  }
+  
+  .DefaultCheckBox1 input[type="checkbox"] {
+    margin: 0;
+    width: 20px;
+    cursor: pointer;
+  }
+  
+.submitNewAddress{
+    width:40%;
+    align-items: center;
+    border-radius: 20px;
+}
+.returnNewAddress{
+    width:40%;
+    padding-left: 20px;
+    border-radius: 20px;
+}
+.buttonsNewAddress{
+    display: flex;
+    gap: 70px;
+}
+.buttonsAddress{
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  max-width: 100%; /* limite l'étalement */
+  flex-wrap: wrap; 
+}
+.buttonsNewPayment{
+    display: flex;
+    gap:20px;
+}
+.submitNewPayment{
+    width:40%;
+    align-items: center;
+    border-radius: 20px;
+}
+.returnNewPayment{
+    width:40%;
+    padding-left: 20px;
+    border-radius: 20px;
+}
+.default-tag {
+    background-color: #FD4C2A;
+    color: #FFFFFF;
+    font-size: 0.8rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 8px;
+  }
+  .default-notice {
+    color: #666;
+    font-size: 0.8em;
+    margin-left: 5px;
+  }
+  
+  .checkBox:checked + strong {
+    color: #2196F3;
+  }
+  .CheckoutWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 2rem;
+  }
+  
+  .CheckoutContent {
+    text-align: center;
+    max-width: 600px;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+  }
+  
+  .VerifyIcon {
+    color: #4CAF50;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .h2content7 {
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .buttonCheckoutContent {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .NavigateHome, .NavigateOrder {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .NavigateHome {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+  .NavigateHome:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .NavigateOrder {
+    background-color: #FD4C2A;
+    color: white;
+  }
+  
+  .NavigateOrder:hover {
+    background-color: #3e8e41;
+  }

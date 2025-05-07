@@ -105,16 +105,15 @@ export const CartProvider = ({ children }) => {
       setIsAdding(false);
     }
   };
-  // Update cart item quantity
+  
   const updateQuantity = async (itemId, change) => {
     const token = localStorage.getItem("authToken");
     if (!token) return;
-
+    
     try {
-      const endpoint =
-        change > 0
-          ? `http://localhost:8080/user/cart/${itemId}/increment`
-          : `http://localhost:8080/user/cart/${itemId}/decrement`;
+      const endpoint = change > 0
+        ? `http://localhost:8080/user/cart/${itemId}/increment`
+        : `http://localhost:8080/user/cart/${itemId}/decrement`;
 
       const res = await fetch(endpoint, {
         method: "PUT",
@@ -122,13 +121,42 @@ export const CartProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       });
+      
+      if (res.status === 403) {
+        throw new Error("Access denied - invalid token");
+      }
 
       if (!res.ok) throw new Error("Failed to update item quantity");
 
-      // Re-fetch cart details après la mise à jour
-      fetchCartDetails();
+      await fetchCartDetails();
     } catch (error) {
       console.error("Failed to update item quantity:", error);
+    }
+  };
+
+
+  const removeItem = async (itemId) => {
+    const token = localStorage.getItem("authToken");
+    if (!token) return;
+  
+    try {
+      const removeResponse = await fetch(`http://localhost:8080/user/cart/${itemId}/delete`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-type": "application/json",
+        },
+      });
+  
+      if (!removeResponse.ok) {
+        const res = await removeResponse.text();
+        console.log("Failed to delete item from cart", res);
+        throw new Error("Failed to delete item");
+      } else {
+        await fetchCartDetails();
+      }
+    } catch (error) {
+      console.log("Delete from cart failed", error);
     }
   };
 
@@ -143,6 +171,7 @@ export const CartProvider = ({ children }) => {
       orderDetails,
       AddToCart,
       updateQuantity,
+      removeItem,
       showAlert,           // Ajout de cette valeur
       currentItemName      // Et de celle-ci
     }}>
