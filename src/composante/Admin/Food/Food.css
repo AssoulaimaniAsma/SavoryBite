@@ -1,138 +1,256 @@
-.DivTableFood{
-    justify-content:center;
-    align-items:center;
-    flex-direction: column;
-    display:flex;
-    width:100%;
-    padding-left: 20%;
+/* Main Container */
+.DivTableFood {
+  margin: 2rem auto;
+  padding: 0 1rem;
+  max-width: 1400px;
+  width: 100%;
+  padding-left: 200px;
+  padding-top: 60px;
+  box-sizing: border-box;
 }
-.food{
-    padding-top:5%;
-    font-size:2rem;
-    font-weight:bold;
-    color:#FD4C2A;
+
+/* Header Section */
+.food {
+  color: #FD4C2A;
+  font-size: 1.8rem;
+  margin: 0;
+  font-weight: bold;
+  padding-bottom: 20px;
+  text-align: center;
+  width: 100%;
 }
-.TableFood{
-    text-align:center;
-    width:75vw;
-    border-radius: 20px;
-    overflow: hidden;
+
+.searchBarFood {
+  padding: 0.6rem 1rem;
+  border: 2px solid #FD4C2A;
+  border-radius: 20px;
+  width: 300px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+  display: block;
+  margin-left: 0;
 }
-.trTableFood{
-    border:1px solid black;
-    background-color:#FD4C2A;
-}
-.DeleteRestaurant:hover, .BanRestaurant:hover{
-    color:black;
-}
-.searchBarFood{
-    border: 2px solid #FD4C2A;
-    padding:5px;
-    width:15%;
-    height:10%;
-    border-radius:25px;
-    margin-left:-55%;
-    margin-bottom:1%;
-}
+
 .searchBarFood:focus {
-    border-color: #D7D2D0;  /* Darker border on focus */
-    box-shadow: 0 0 5px #525251; /* Blue glow effect */
-    outline: none;
+  border-color: #525251;
+  box-shadow: 0 0 5px rgba(82, 82, 81, 0.3);
+  outline: none;
+  width: 320px;
+}
+
+/* Table Styles */
+.TableFood {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.TableFood th {
+  background-color: #FD4C2A;
+  color: white;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+}
+
+.TableFood td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+}
+
+.TableFood tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.TableFood tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Image Styles */
+.TableFood img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Flag Button */
+.FlagFood {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.25rem;
+  transition: transform 0.2s ease;
+}
+
+.FlagFood:hover {
+  transform: scale(1.1);
+}
+
+.FlagFood.flagged {
+  color: red;
+}
+
+.FlagFood.unflagged {
+  color: green;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.pagination button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #FD4C2A;
+  background-color: white;
+  color: #FD4C2A;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #f8d7d0;
+}
+
+.pagination button.active {
+  background-color: #FD4C2A;
+  color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #ccc;
+  color: #ccc;
+}
+
+/* Popup Styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.popup-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.popup-content button {
+  padding: 0.5rem 1rem;
+  background-color: #FD4C2A;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.popup-content button:hover {
+  background-color: #c03c20;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .DivTableFood {
+    padding-left: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .DivTableFood {
+    padding-left: 1rem;
+    padding-top: 1rem;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  
+  .food {
+    font-size: 1.5rem;
+  }
+  
+  .searchBarFood {
+    width: 250px;
+    margin: 0 auto 1.5rem auto;
+  }
+  
+  .searchBarFood:focus {
+    width: 270px;
   }
 
-  .popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
+  .TableFood {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .TableFood th,
+  .TableFood td {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .TableFood img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .searchBarFood {
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+    max-width: 280px;
   }
   
-  .popup-content {
-    background: white;
-    padding: 30px 40px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  .searchBarFood:focus {
+    width: 100%;
+    max-width: 280px;
   }
-  
-  .popup-content p {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-  
-  .popup-content button {
-    padding: 8px 18px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  
-  .popup-content button:hover {
-    background-color: #0056b3;
-  }
-.DetailsRestaurant{
-    text-decoration :underline;
-}
-.btn-approve{
-    color:green;
-}
-.btn-decline{
-    color:red;
-}
-.last-row {
-    border-bottom: 1px solid #ccc; /* Adjust color/thickness as you like */
-  }
-  .last-row td {
-    padding-bottom: 12px;
-  }  
-.trTableFood{
-    border-bottom: none;
-}
-.FlagFood {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-    justify-items: center;
-  }
+
   .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 0.3rem;
   }
-  
+
   .pagination button {
-    margin: 0 5px;
-    padding: 5px 10px;
-    border: 1px solid #FD4C2A;
-    background-color: white;
-    color: #FD4C2A;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
   }
-  
-  .pagination button.active {
-    background-color: #FD4C2A;
-    color: white;
+
+  .TableFood img {
+    width: 40px;
+    height: 40px;
   }
-  
-  .pagination button:hover:not(.active) {
-    background-color: #f8d7d0;
+
+  .FlagFood {
+    font-size: 1rem;
   }
-  
-  .pagination button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    border-color: #ccc;
-    color: #ccc;
-  }
+}

@@ -1,152 +1,132 @@
-.TableOrders{
-    text-align:center; 
-    border:1px solid #ccc;
-    width:75vw;
-    margin-left:20%;
-    border-radius: 20px;
-    overflow: hidden;
-}
-.searchBarOrder{
-  border: 2px solid #FD4C2A;
-  padding:5px;
-  width:15%;
-  height:10%;
-  border-radius:25px;
-  margin:5px;
-  margin-bottom:25px;
-  margin-top:25px;
-  margin-left:-25%;
-}
-.searchBarOrder:focus {
-  border-color: #D7D2D0;  /* Darker border on focus */
-  box-shadow: 0 0 5px #525251; /* Blue glow effect */
-  outline: none;
-}
-.CustomerOrder {
-    font-weight:bold;
-    color : #FD4C2A;
-    font-size:2rem;
-    padding-left: 20%;
-}
-.thOrders{
-    background-color: #FD4C2A;
-}
-.trOrders{
-    border :1px solid #ccc;
-    height: 70px;
-}
-.divContentOrder{
-    margin-top:5% ;
-    justify-content:center;
-    align-items:center;
-    flex-direction: column;
-    display:flex;
-    width:100%;
-}
-/* Modal Content Styling */
-.OrderDetails {
-  padding: 2rem;
-  position: relative;
-  text-align: center;
-  overflow-y: auto; /* Allow scrolling if content overflows */
+/* Main Container */
+.orders-container {
+  margin: 2rem auto;
+  padding: 0 1rem;
+  max-width: 1400px;
+  width: 100%;
+  padding-left: 200px;
+  padding-top: 60px;
+  box-sizing: border-box;
 }
 
-.modal-content {
-  border: 1px solid #ccc;  /* thinner, subtle border */
-  padding: 2rem;
-  border-radius: 10px;
-  margin-left: 10%;
-  background: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 70%;
-  max-width: 90vw; /* Ensure it doesn't stretch too wide on smaller screens */
-  height: auto;  /* Allow the height to adjust based on content */
-  top: 50%;
-  left: 50%;
-  right: auto;
-  bottom: auto;
-  transform: translate(-50%, -50%);  /* perfect centering */
+/* Header Section */
+.orders-header {
   display: flex;
-  flex-direction: column; /* Allow table and other content to stack vertically */
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+  width: 100%;
 }
 
-/* Ensure table takes dynamic height in modal */
-.TableOrderDetails {
-  margin: 0 auto;
-  width: 80%;
-  border-collapse: collapse;
-  text-align: center;
-  border-radius: 20px;
-    overflow: hidden;
-}
-
-.TableOrderDetails th,
-.TableOrderDetails td {
-  padding: 8px;
-  border: 1px solid #ccc;
-  font-size: 0.9rem;
-  font-weight: normal;
-}
-
-.TableOrderDetails th {
-  color: white;
-  background-color: #FD4C2A;  /* Ensure header row stands out */
-}
-
-.TableOrderDetails td {
-  color: black;
-}
-
-.imageOrderDetails {
-  height: 70px;
-  width: 70px;
-  object-fit: cover;
-  border-radius: 5%;
-  margin-left: 15px;
-  padding: 0;
-}
-
-/* Modal Overlay */
-.overlay {
-  background-color: rgba(228, 228, 228, 0.5);
-}
-
-/* Close Button */
-.Close {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: transparent;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
+.orders-title {
   color: #FD4C2A;
+  font-size: 1.8rem;
+  margin: 0;
+  font-weight: bold;
+  padding-bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.search-input {
+  padding: 0.6rem 1rem;
+  border: 2px solid #FD4C2A;
+  border-radius: 20px;
+  width: 300px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+}
+
+.search-input:focus {
+  border-color: #525251;
+  box-shadow: 0 0 5px rgba(82, 82, 81, 0.3);
+  outline: none;
+  width: 320px;
+}
+
+/* Table Styles */
+.table-responsive {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.orders-table th {
+  background-color: #FD4C2A;
+  color: white;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.orders-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+.orders-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.orders-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Details Button */
+.details-btn {
+  background: none;
+  border: none;
+  color: #FD4C2A;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.9rem;
   transition: color 0.3s ease;
 }
 
-.Close:hover {
+.details-btn:hover {
   color: #c03c20;
+  text-decoration: none;
 }
-.details{
-  text-decoration: underline;
-  color:#FD4C2A;
+
+/* Status Styles */
+.status-cell {
+  font-weight: bold;
+  text-transform: capitalize;
 }
-/* Ajoutez ceci à votre fichier TabOrders.css */
+
+/* Pagination */
 .pagination {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
 }
 
 .pagination button {
-  margin: 0 5px;
-  padding: 5px 10px;
+  padding: 0.5rem 1rem;
   border: 1px solid #FD4C2A;
   background-color: white;
   color: #FD4C2A;
   border-radius: 5px;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #f8d7d0;
 }
 
 .pagination button.active {
@@ -154,12 +134,199 @@
   color: white;
 }
 
-.pagination button:hover:not(.active) {
-  background-color: #f8d7d0;
-}
 .pagination button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   border-color: #ccc;
   color: #ccc;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.order-modal {
+  position: relative;
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  max-width: 90%;
+  width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #FD4C2A;
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #c03c20;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.order-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.items-table-container {
+  overflow-x: auto;
+}
+
+.items-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.items-table th {
+  background-color: #FD4C2A;
+  color: white;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.items-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #eee;
+}
+
+.items-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.item-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.delivery-info {
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.delivery-info h3 {
+  margin-top: 0;
+  color: #FD4C2A;
+}
+
+/* Loading and Error States */
+.loading, .error, .no-orders {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+}
+
+.error {
+  color: #d32f2f;
+}
+
+.no-orders {
+  color: #666;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .orders-container {
+    padding-left: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .orders-container {
+    padding-left: 1rem;
+    padding-top: 1rem;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  
+  .orders-title {
+    font-size: 1.5rem;
+  }
+  
+  .search-input {
+    width: 250px;
+    margin: 0 auto 1.5rem auto;
+  }
+  
+  .search-input:focus {
+    width: 270px;
+  }
+
+  .orders-table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .orders-table th,
+  .orders-table td {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-input {
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .search-input:focus {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .details-btn {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  .pagination {
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  .pagination button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+  }
+  
+  .item-image {
+    width: 40px;
+    height: 40px;
+  }
 }

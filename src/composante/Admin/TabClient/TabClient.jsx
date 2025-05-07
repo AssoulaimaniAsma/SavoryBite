@@ -22,7 +22,7 @@ function TabClient(){
     const [showBanPopup, setShowBanPopup] = useState(false);
     const [userIdToDelete, setUserIdToDelete] = useState(null);
     const [userIdToBan, setUserIdToBan] = useState(null);
-    const [clientsPerPage] = useState(5);
+    const [clientsPerPage] = useState(8);
       // Filter clients based on the search query, with safeguards for undefined values
       const filteredClients = clients.filter((client) =>
         (client.firstName ? client.firstName.toLowerCase() : "")

@@ -1,8 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import {
-  FaBars,
   FaClipboardList,
-  FaFileAlt,
   FaUserFriends,
   FaUtensils,
   FaUserCircle,
@@ -29,7 +27,7 @@ const Sidebar = () => {
       if (res.ok){ 
         navigate("/admin/signin");}
     } catch (error) {
-      console.error("Erreur lors de la déconnexion :", error);
+      console.error("Error during logout:", error);
     }
   };
 
@@ -45,61 +43,68 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <div className="w-1/5 h-screen bg-[#1e1e2f] fixed left-0 top-0 overflow-y-auto z-[1000]">
-      <div className="flex items-center py-20 font-bold">
+    <div className="w-80 h-screen bg-[#1e1e2f] fixed left-0 top-0 overflow-y-auto z-[1000] flex flex-col transition-all duration-300">
+      {/* Logo Section */}
+      <div className="flex items-center justify-center py-10 px-6">
         <img 
           src="/image/SmallWhiteLogoNoBg.png" 
-          className="w-[100px] h-auto" 
+          className="w-20 h-auto mr-3" 
           alt="Logo" 
         />
-        <Link to="/restaurant" className="text-black text-4xl">
-          <span className="text-[#FD4C2A] font-extrabold">Savory</span>
-          <span className="text-white">Bites</span>
+        <Link to="/restaurant" className="text-black">
+          <span className="text-[#FD4C2A] font-extrabold text-3xl">Savory</span>
+          <span className="text-white text-3xl">Bites</span>
         </Link>
       </div>
 
-      <div id="idSidebar-line" className="pt-[20%]">
+      {/* Navigation Links */}
+      <div className="flex-1 flex flex-col pt-10">
         <Link 
           to="/admin/TabOrders" 
-          className="flex items-center gap-[10px] py-[3%] px-[16%] text-[#FD4C2A] no-underline text-xl hover:text-white"
+          className="flex items-center gap-4 py-4 px-8 text-[#FD4C2A] no-underline text-xl hover:text-white hover:bg-[#2d2d42] transition-colors duration-200"
         >
-          <FaClipboardList className="text-3xl" /> Orders
+          <FaClipboardList className="text-2xl" /> Orders
         </Link>
         <Link 
           to="/admin/Tabclient" 
-          className="flex items-center gap-[10px] py-[3%] px-[16%] text-[#FD4C2A] no-underline text-xl hover:text-white"
+          className="flex items-center gap-4 py-4 px-8 text-[#FD4C2A] no-underline text-xl hover:text-white hover:bg-[#2d2d42] transition-colors duration-200"
         >
-          <FaUserFriends className="text-3xl" /> Client
+          <FaUserFriends className="text-2xl" /> Clients
         </Link>
         <Link 
           to="/admin/TabRestaurant" 
-          className="flex items-center gap-[10px] py-[3%] px-[16%] text-[#FD4C2A] no-underline text-xl hover:text-white"
+          className="flex items-center gap-4 py-4 px-8 text-[#FD4C2A] no-underline text-xl hover:text-white hover:bg-[#2d2d42] transition-colors duration-200"
         >
-          <FaUtensils className="text-3xl" /> Restaurant
+          <FaUtensils className="text-2xl" /> Restaurants
         </Link>
         <Link 
           to="/admin/Food" 
-          className="flex items-center gap-[10px] py-[3%] px-[16%] text-[#FD4C2A] no-underline text-xl hover:text-white"
+          className="flex items-center gap-4 py-4 px-8 text-[#FD4C2A] no-underline text-xl hover:text-white hover:bg-[#2d2d42] transition-colors duration-200"
         >
-          <RiRestaurant2Line className="text-3xl" /> Food
+          <RiRestaurant2Line className="text-2xl" /> Food
         </Link>
         <Link 
           to="/admin/Dashboard" 
-          className="flex items-center gap-[10px] py-[3%] px-[16%] text-[#FD4C2A] no-underline text-xl hover:text-white"
+          className="flex items-center gap-4 py-4 px-8 text-[#FD4C2A] no-underline text-xl hover:text-white hover:bg-[#2d2d42] transition-colors duration-200"
         >
-          <MdDashboard className="text-3xl" /> Dashboard
+          <MdDashboard className="text-2xl" /> Dashboard
         </Link>
       </div>
 
-      <div ref={menuRef} className="pt-[80%] pl-[15px] cursor-pointer">
-        <div onClick={toggleMenu}>
-          <FaUserCircle size={50} color="#ccc" />
+      {/* User Profile Section */}
+      <div ref={menuRef} className="p-6 cursor-pointer relative mt-auto mb-8">
+        <div 
+          onClick={toggleMenu}
+          className="flex items-center gap-4 hover:bg-[#2d2d42] p-3 rounded-lg transition-colors duration-200"
+        >
+          <FaUserCircle size={40} color="#ccc" />
+          <span className="text-white text-lg">Admin</span>
         </div>
 
         {menuOpen && (
-          <div className="absolute top-[89%] left-[17%] bg-white shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-lg overflow-hidden z-10 border border-[#FD4C2A]">
+          <div className="absolute bottom-20 left-6 bg-white shadow-xl rounded-lg overflow-hidden z-10 border-2 border-[#FD4C2A] min-w-[160px]">
             <button
-              className="p-[10px_20px] border-none bg-transparent w-full text-left cursor-pointer text-[#FD4C2A]"
+              className="px-6 py-3 w-full text-left hover:bg-gray-100 text-[#FD4C2A] text-lg font-medium transition-colors duration-200"
               onClick={logout}
             >
               Logout
