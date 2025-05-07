@@ -1,13 +1,12 @@
 /* Dashboard.css */
 .DashBoardContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    max-width: 1400px;
     width: 100%;
-    max-width: 1520px;
-    margin: 0 auto;
-    margin-left: 340px;
+    padding-left: 100px;
+    padding-top: 30px;
+    box-sizing: border-box;
 }
 
 .Dashboards {
