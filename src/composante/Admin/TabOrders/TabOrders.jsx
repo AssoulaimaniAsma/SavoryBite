@@ -107,6 +107,10 @@ function TabOrders() {
     }, []);
 
     return (
+      <div className="ml-80 pl-8 pr-8 pt-16 w-[calc(100%-320px)] min-h-screen
+              lg:pl-12 lg:pr-12
+              md:ml-72 md:w-[calc(100%-288px)]
+              sm:ml-0 sm:w-full sm:px-4">
         <div className="orders-container">
             <div className="orders-header">
                 <h1 className="orders-title">Customer Orders</h1>
@@ -280,6 +284,7 @@ function TabOrders() {
                     </div>
                 </div>
             </Modal>
+        </div>
         </div>
     );
 }
