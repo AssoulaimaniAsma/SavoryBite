@@ -1,163 +1,176 @@
+/* Dashboard.css */
 .DashBoardContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    padding: 20px;
     width: 100%;
-    margin-left: 10%;
-    padding: 30px 15px;
-    background: #FFF3F0; /* Soft peach background */
+    max-width: 1520px;
+    margin: 0 auto;
+    margin-left: 340px;
 }
 
 .Dashboards {
-    padding-top: 5%;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: bold;
     color: #FD4C2A;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-    margin-bottom: 80px;
-}
-
-.stat-button, .stat-button1 {
-    background-color: #FD4C2A;
-    color: white;
-    border: none;
-    margin: 8px;
-    border-radius: 12px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    height: 220px;
-    width: 220px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.stat-button:hover, .stat-button1:hover {
-    background-color: #FF7043; /* Lighter orange hover */
-    transform: scale(1.05);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
-
-.new-line-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
+    text-align: center;
+    margin: 20px 0;
 }
 
 .stats-button {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding-bottom: 50px;
+    gap: 15px;
+    margin-bottom: 50px;
+    width: 100%;
+    padding-top: 30px;
+}
+
+.stat-button {
+    background-color: #FD4C2A;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 220px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stat-button:hover {
+    background-color: #FF7043;
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .TitleButton {
-    font-size: 16px;
-    padding-top: 0px;
-    padding-left: 4px;
-    text-align: center;
-    color: #fff; /* Warm yellow title */
+    font-size: 21px;
+    color: #fff;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .RsultButton {
     font-weight: bold;
-    font-size: 38px;
-    padding: 10px 0px;
+    font-size: 24px;
     color: #fff;
 }
-.UserStatus{
-    font-size: 2rem;
-    font-weight: bold;
-    color: #FD4C2A;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-    justify-content:center;
-    align-items:center;
-    flex-direction: column;
-}
-.RestaurantStatus{
-    font-size: 2rem;
-    font-weight: bold;
-    color: #FD4C2A;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-    justify-content:center;
-    align-items:center;
-    flex-direction: column;
-    padding-left:50px;
-}
-.FoodStatus{
-    font-size: 2rem;
-    font-weight: bold;
-    color: #FD4C2A;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-    justify-content:center;
-    align-items:center;
-    flex-direction: column;
-    padding-left:0px;
-}
+
 .PieChartsContainer {
     display: flex;
-    justify-content: center; /* center horizontally */
-    align-items: flex-start; /* align top */
-    gap: 60px; /* spacing between the two charts */
-    flex-wrap: wrap; /* responsive for smaller screens */
-    padding-top: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    margin-bottom: 30px;
 }
-.PieChartRestaurant, .PieChartUser, .PieChartFood{
+
+.PieChartContainer {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ChartTitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FD4C2A;
+    font-weight: bold !important;
     text-align: center;
+    margin-bottom: 15px;
 }
-.LineChartOrders {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.OrderStatus{
-    padding-top: 5%;
-    font-size: 2rem;
-    font-weight: bold;
-    color: #FD4C2A;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-}
-.BarChartRevenue{
-    padding-top:30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.MonthlyRevenue{
-    font-size: 2rem;
-    font-weight: bold;
-    color: #FD4C2A;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 
-}
 .LineChart-BarChart {
-    padding-top: 50px;
     display: flex;
-    flex-direction: row; /* Aligns the charts horizontally */
-    justify-content: space-between; /* Adds space between the charts */
-    align-items: flex-start; /* Keeps the charts aligned at the top */
-    gap: 60px; /* Adds spacing between the charts */
-    flex-wrap: nowrap; /* Prevents wrapping of charts */
-    width: 100%; /* Ensures it takes the full width of the container */
-    max-width: 1200px; /* Optional: To limit how wide it can stretch */
-    margin: 0 auto; /* Centers the container horizontally */
-}
-.LineChartOrders,
-.BarChartRevenue {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%; /* Ensures both charts take up equal space */
-    max-width: 600px; /* Optional: Limit width of the charts */
-    margin: 0; /* Reset margin */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
 }
 
-.LineChartOrders svg, .BarChartRevenue svg {
-    margin-bottom: 0; /* Removes any extra space below the SVG charts */
+.ChartContainer {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.loading {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 50px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .PieChartContainer {
+        min-width: 280px;
+    }
+    .ChartContainer {
+        min-width: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .Dashboards {
+        font-size: 1.5rem;
+    }
+    
+    .stat-button {
+        width: 150px;
+        height: 90px;
+    }
+    
+    .TitleButton {
+        font-size: 13px;
+    }
+    
+    .RsultButton {
+        font-size: 20px;
+    }
+    
+    .PieChartContainer, .ChartContainer {
+        min-width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .Dashboards {
+        font-size: 1.3rem;
+    }
+    
+    .stat-button {
+        width: 130px;
+        height: 80px;
+    }
+    
+    .TitleButton {
+        font-size: 12px;
+    }
+    
+    .RsultButton {
+        font-size: 18px;
+    }
+    
+    .ChartTitle {
+        font-size: 1rem;
+    }
 }
