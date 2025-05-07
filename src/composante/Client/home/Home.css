@@ -361,10 +361,13 @@
 
   .dropdowns {
     display: grid;
-    z-index:1;
+    z-index: 1;
     gap: 20px;
-    padding-left: 30%;
-  }
+    position: relative; /* or 'absolute' if needed */
+    left: 30%; /* replaces padding-left */
+    width: 70%; /* adjust as needed */
+    transform: translateX(-30%); /* helps center the offset */
+}
 .AskQuestion{
     background-color:#FD4C2A;
     border:none;
