@@ -1,175 +1,152 @@
 /* Dashboard.css */
+:root {
+  --primary-color: #FD4C2A;
+  --primary-hover: #FF7043;
+  --text-light: #fff;
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.15);
+  --shadow-card: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
+  --transition: all 0.3s ease;
+}
+
 .DashBoardContainer {
     margin: 2rem auto;
-    padding: 0 1rem;
+    padding: 1rem;
     max-width: 1400px;
-    width: 100%;
-    padding-left: 100px;
-    padding-top: 30px;
+    width: calc(100% - 2rem);
     box-sizing: border-box;
 }
 
 .Dashboards {
-    font-size: 1.8rem;
+    font-size: clamp(1.3rem, 4vw, 1.8rem);
     font-weight: bold;
-    color: #FD4C2A;
+    color: var(--primary-color);
     text-align: center;
-    margin: 20px 0;
+    margin: 1.25rem 0;
 }
 
 .stats-button {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0 3rem;
     width: 100%;
-    padding-top: 30px;
 }
 
 .stat-button {
-    background-color: #FD4C2A;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--text-light);
     border: none;
-    border-radius: 12px;
-    padding: 15px;
-    font-size: 16px;
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    font-size: 1rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-    width: 220px;
-    height: 180px;
+    transition: var(--transition);
+    aspect-ratio: 1/0.8;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
+    min-height: 120px;
 }
 
 .stat-button:hover {
-    background-color: #FF7043;
+    background-color: var(--primary-hover);
     transform: scale(1.05);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-md);
 }
 
 .TitleButton {
-    font-size: 21px;
-    color: #fff;
-    margin-bottom: 5px;
+    font-size: clamp(0.75rem, 3vw, 1.3rem);
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
     font-weight: bold;
+    text-align: center;
 }
 
 .RsultButton {
     font-weight: bold;
-    font-size: 24px;
-    color: #fff;
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    color: var(--text-light);
 }
 
 .PieChartsContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 2rem;
 }
 
 .PieChartContainer {
-    flex: 1;
-    min-width: 300px;
-    max-width: 400px;
     background: white;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0.625rem;
+    padding: 1rem;
+    box-shadow: var(--shadow-card);
 }
 
 .ChartTitle {
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 3vw, 1.5rem);
     font-weight: bold;
-    color: #FD4C2A;
-    font-weight: bold !important;
+    color: var(--primary-color);
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
 }
 
 .LineChart-BarChart {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
     width: 100%;
 }
 
 .ChartContainer {
-    flex: 1;
-    min-width: 300px;
-    max-width: 600px;
     background: white;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    border-radius: 0.625rem;
+    padding: 1rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 1.25rem;
+    min-height: 300px;
 }
 
 .loading {
     text-align: center;
     font-size: 1.2rem;
-    padding: 50px;
+    padding: 3rem;
 }
 
 /* Responsive adjustments */
-@media (max-width: 1200px) {
-    .PieChartContainer {
-        min-width: 280px;
-    }
-    .ChartContainer {
-        min-width: 280px;
-    }
-}
-
 @media (max-width: 768px) {
-    .Dashboards {
-        font-size: 1.5rem;
+    .DashBoardContainer {
+        padding: 0.5rem;
+        width: calc(100% - 1rem);
+    }
+    
+    .stats-button {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 0.75rem;
     }
     
     .stat-button {
-        width: 150px;
-        height: 90px;
+        min-height: 100px;
+        padding: 0.75rem;
     }
     
-    .TitleButton {
-        font-size: 13px;
-    }
-    
-    .RsultButton {
-        font-size: 20px;
-    }
-    
-    .PieChartContainer, .ChartContainer {
-        min-width: 100%;
-        max-width: 100%;
+    .PieChartsContainer,
+    .LineChart-BarChart {
+        grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 480px) {
-    .Dashboards {
-        font-size: 1.3rem;
+    .stats-button {
+        grid-template-columns: repeat(2, 1fr);
     }
     
     .stat-button {
-        width: 130px;
-        height: 80px;
-    }
-    
-    .TitleButton {
-        font-size: 12px;
-    }
-    
-    .RsultButton {
-        font-size: 18px;
-    }
-    
-    .ChartTitle {
-        font-size: 1rem;
+        aspect-ratio: 1/1;
+        min-height: 80px;
     }
 }
