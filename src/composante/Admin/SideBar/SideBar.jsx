@@ -1,26 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
 import {
-  FaBars,
   FaClipboardList,
-  FaFileAlt,
   FaUserFriends,
   FaUtensils,
   FaUserCircle,
 } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../../image/favicon.png";
-import "./SideBar.css";
 import { RiRestaurant2Line } from "react-icons/ri";
-
+import { MdDashboard } from "react-icons/md"; 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const menuRef = useRef();
-
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -35,11 +26,10 @@ const Sidebar = () => {
       if (res.ok){ 
         navigate("/admin/signin");}
     } catch (error) {
-      console.error("Erreur lors de la déconnexion :", error);
+      console.error("Error during logout:", error);
     }
   };
 
-  // Fermer le menu profil si on clique en dehors
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
@@ -52,68 +42,74 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <div>
-      {/* Burger icon */}
-      <FaBars
-        className={`SIDE ${isOpen ? "white" : ""}`}
-        onClick={toggleSidebar}
-      />
+<div className="w-64 h-screen bg-[#1e1e2f] fixed left-0 top-0 overflow-hidden z-[1000] flex flex-col transition-all duration-300">
+{/* Logo Section */}
+      <div className="flex items-center justify-center py-10 px-5">
+        <img 
+          src={require("./SmallWhiteLogoNoBg.png")}
+          className="w-20 h-auto mr-1" 
+          alt="Logo" 
+        />
+        <Link to="/restaurant" className="text-black">
+          <span className="text-[#FD4C2A] font-extrabold text-3xl">Savory</span>
+          <span className="text-white text-3xl">Bites</span>
+        </Link>
+      </div>
 
-      {/* Sidebar content */}
-      <div className={`sidebar ${isOpen ? "open" : ""}`}>
-        <div className="flex items-center py-20 space-x-2 font-bold">
-          <img src={logo} className="w-12 h-12" alt="Logo" />
-          <Link to="/restaurant" className="text-black text-3xl">
-            <span className="text-[#FD4C2A] font-extrabold">Savory</span>Bites
-          </Link>
+      {/* Navigation Links */}
+      <div className="flex-1 flex flex-col pt-10">
+        <Link 
+          to="/admin/TabOrders" 
+          className="flex items-center gap-4 py-4 px-8 text-[#FD4C2A] no-underline text-xl hover:text-white hover:bg-[#2d2d42] transition-colors duration-200"
+        >
+          <FaClipboardList className="text-2xl" /> Orders
+        </Link>
+        <Link 
+          to="/admin/Tabclient" 
+          className="flex items-center gap-4 py-4 px-8 text-[#FD4C2A] no-underline text-xl hover:text-white hover:bg-[#2d2d42] transition-colors duration-200"
+        >
+          <FaUserFriends className="text-2xl" /> Clients
+        </Link>
+        <Link 
+          to="/admin/TabRestaurant" 
+          className="flex items-center gap-4 py-4 px-8 text-[#FD4C2A] no-underline text-xl hover:text-white hover:bg-[#2d2d42] transition-colors duration-200"
+        >
+          <FaUtensils className="text-2xl" /> Restaurants
+        </Link>
+        <Link 
+          to="/admin/Food" 
+          className="flex items-center gap-4 py-4 px-8 text-[#FD4C2A] no-underline text-xl hover:text-white hover:bg-[#2d2d42] transition-colors duration-200"
+        >
+          <RiRestaurant2Line className="text-2xl" /> Food
+        </Link>
+        <Link 
+          to="/admin/Dashboard" 
+          className="flex items-center gap-4 py-4 px-8 text-[#FD4C2A] no-underline text-xl hover:text-white hover:bg-[#2d2d42] transition-colors duration-200"
+        >
+          <MdDashboard className="text-2xl" /> Dashboard
+        </Link>
+      </div>
+
+      {/* User Profile Section */}
+      <div ref={menuRef} className="p-6 cursor-pointer relative mt-auto mb-8">
+        <div 
+          onClick={toggleMenu}
+          className="flex items-center gap-4 hover:bg-[#2d2d42] p-3 rounded-lg transition-colors duration-200"
+        >
+          <FaUserCircle size={40} color="#ccc" />
+          <span className="text-white text-lg">Admin</span>
         </div>
 
-        <div className="sidebar-lines">
-          <Link to="/admin/TabOrders" className="sidebar-line">
-            <FaClipboardList className="icon" /> Orders
-          </Link>
-          <Link to="/admin/TabOrdersDetails" className="sidebar-line">
-            <FaFileAlt className="icon" /> Orders Details
-          </Link>
-          <Link to="/admin/Tabclient" className="sidebar-line">
-            <FaUserFriends className="icon" /> Client
-          </Link>
-          <Link to="/admin/TabRestaurant" className="sidebar-line">
-            <FaUtensils className="icon" /> Restaurant
-          </Link>
-          <Link to="/admin/TabRestaurantDetails" className="sidebar-line">
-            <RiRestaurant2Line className="icon" /> Restaurant Details
-          </Link>
-        </div>
-
-
-          <div ref={menuRef} className="profile" >
-            <div
-              className="profile-icon"
-              onClick={toggleMenu}
+        {menuOpen && (
+          <div className="absolute bottom-20 left-6 bg-white shadow-xl rounded-lg overflow-hidden z-10 border-2 border-[#FD4C2A] min-w-[160px]">
+            <button
+              className="px-6 py-3 w-full text-left hover:bg-gray-100 text-[#FD4C2A] text-lg font-medium transition-colors duration-200"
+              onClick={logout}
             >
-              <FaUserCircle size={50} color="#ccc" />
-            </div>
-
-            {menuOpen && (
-              <div
-                className="dropdown-menu"
-              >
-                <button
-                  className="profile-button"
-                  onClick={() => navigate("/profile")}
-                >
-                  Profile
-                </button>
-                <button
-                  className="LogoutButton"
-                  onClick={logout}
-                >
-                  Logout
-                </button>
-              </div>
-            )}
+              Logout
+            </button>
           </div>
+        )}
       </div>
     </div>
   );
