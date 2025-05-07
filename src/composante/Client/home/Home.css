@@ -151,12 +151,12 @@
     z-index:1;
     padding-left:15%;
 }
-.backgroundimg2{
+.backgroundimgg2{
     width:50%;
-    height:15%;
+    height:70%;
     position: block;
     margin-left:70%;
-    margin-top:-25%;
+    margin-top:-26%;
     position : absolute;
     filter: blur(3px);
 }
@@ -175,11 +175,11 @@
     font-weight: bold !important;
     font-size: 2rem;
 }
-.backgroundimg4{
+.backgroundimgg4{
     width:40%;
-    height:25%;
+    height:82%;
     margin-left:-14%;
-    margin-top:-56%;
+    margin-top:-18%;
     display:flex;
     position: absolute;
     filter: blur(3px);
@@ -273,10 +273,10 @@
 #AddToCart1{
     padding-left:80%;
 }
-.backgroundimg6{
-    padding-top:10%;
-    height:12%;
-    margin-left:85%;
+.backgroundimgg6{
+    padding-top: 10px;
+    height:50%;
+    margin-left:83%;
     filter : blur(3px);
     position:absolute;
     z-index: 1;
@@ -363,6 +363,7 @@
     display: grid;
     z-index:1;
     gap: 20px;
+    padding-left: 30%;
   }
 .AskQuestion{
     background-color:#FD4C2A;
@@ -375,10 +376,10 @@
     margin-top:5%;
     position:absolute;
 }
- .fotterPage{
+ .fotterPagee{
     align-items: center;
     display:grid;
-    background-color:#49140a;
+    background-color:#1e1e2f;
     position :absolute;
     left:0;
     right:0;

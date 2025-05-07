@@ -235,7 +235,7 @@ const [showModal2, setShowModal2] = useState(false);
       </div>
 
       <img className="backgroundimg1" src={back1} alt="Burger background" />
-      <img className="backgroundimg2" src={back2} alt="Pizza background" />
+      <img className="backgroundimgg2" src={back2} alt="Pizza background" />
 
      <div className="section2">
         <h2 id="h2content">ON SALE</h2>
@@ -365,7 +365,7 @@ const [showModal2, setShowModal2] = useState(false);
         </div>
       </div>
 
-      <img className="backgroundimg4" src={back4} alt="French fries" />
+      <img className="backgroundimgg4" src={back4} alt="French fries" />
       <img className="backgroundimg5" src={back5} alt="Sauce" />
 
       <div  className="Section5">
@@ -373,7 +373,7 @@ const [showModal2, setShowModal2] = useState(false);
         <ButtonWithLogo />
       </div>
 
-      <img className="backgroundimg6" src={back6} alt="Pizza background" />
+      <img className="backgroundimgg6" src={back6} alt="Pizza background" />
 
       <div className="Section6 ">
         <h2 id="h2content4">Frequently Asked Questions</h2>
@@ -410,7 +410,7 @@ const [showModal2, setShowModal2] = useState(false);
         </div>
       </div>
 
-      <footer className="fotterPage ">
+      <footer className="fotterPagee ">
         <div className="grid grid-cols-2 lg:grid-cols-4 2xl:grid-cols-6 gap-8 py-10 ">
           <div className="col-span-full mb-10 2xl:col-span-2 lg:mb-0 flex items-center flex-col 2xl:items-start">
             <img
