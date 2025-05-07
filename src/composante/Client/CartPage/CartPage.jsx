@@ -171,13 +171,13 @@ function CartPage() {
           <tr>
       <td>Subtotal</td>
       <td className="tdOrderDetails1" colSpan={2}>
-        {foods.reduce((sum, item) => sum + item.food.discountedPrice * item.quantity, 0).toFixed(2)} MAD
+        {cart.reduce((sum, item) => sum + item.food.discountedPrice * item.quantity, 0).toFixed(2)} MAD
       </td>
     </tr>
     <tr>
     <td>Shipping</td>
 <td className="tdOrderDetails1" colSpan={2}>
-  {foods.reduce((sum, item) => {
+  {cart.reduce((sum, item) => {
     // Check if the restaurant is not already in the set and add its shipping fee if not.
     if (item.food && item.food.restaurant) {
       const restaurantId = item.food.restaurant.id;
@@ -196,8 +196,8 @@ function CartPage() {
   <td>Total</td>
   <td className="tdOrderDetails1" colSpan={2}>
     {(
-      foods.reduce((sum, item) => sum + item.totalPrice, 0) + 
-      foods.reduce((sum, item) => {
+      cart.reduce((sum, item) => sum + item.totalPrice, 0) + 
+      cart.reduce((sum, item) => {
         if (item.food && item.food.restaurant) {
           const restaurantId = item.food.restaurant.id;
           if (!sum.restaurants[restaurantId]) {

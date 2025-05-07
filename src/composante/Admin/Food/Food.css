@@ -1,55 +1,45 @@
-.DivTableClient{
-    padding-top:5%;
+.DivTableFood{
     justify-content:center;
     align-items:center;
     flex-direction: column;
     display:flex;
     width:100%;
     padding-left: 20%;
-  }
-  .Clients{
+}
+.food{
+    padding-top:5%;
     font-size:2rem;
     font-weight:bold;
     color:#FD4C2A;
-  }
-  .TableClient{
+}
+.TableFood{
     text-align:center;
-    width:70vw;
+    width:75vw;
     border-radius: 20px;
     overflow: hidden;
-  }
-  .trTableClient{
+}
+.trTableFood{
+    border:1px solid black;
     background-color:#FD4C2A;
-    height:60px;
-  }
-  .trTableClient2{
-    height:60px;
-  }
-  .LinkDeleteClient{
-    align-items:center;
-    display:flex;
-    justify-content:center;
-    color:red;
-    text-decoration:underline;
-  }
-  .LinkDeleteClient :hover{
+}
+.DeleteRestaurant:hover, .BanRestaurant:hover{
     color:black;
-  }
-  .searchBar{
+}
+.searchBarFood{
     border: 2px solid #FD4C2A;
     padding:5px;
     width:15%;
     height:10%;
     border-radius:25px;
     margin-left:-55%;
-    margin-bottom:2%;
-  }
-  .searchBar:focus {
+    margin-bottom:1%;
+}
+.searchBarFood:focus {
     border-color: #D7D2D0;  /* Darker border on focus */
     box-shadow: 0 0 5px #525251; /* Blue glow effect */
     outline: none;
   }
-  
+
   .popup-overlay {
     position: fixed;
     top: 0;
@@ -89,7 +79,31 @@
   .popup-content button:hover {
     background-color: #0056b3;
   }
-  /* Ajoutez ceci à la fin de votre fichier CSS */
+.DetailsRestaurant{
+    text-decoration :underline;
+}
+.btn-approve{
+    color:green;
+}
+.btn-decline{
+    color:red;
+}
+.last-row {
+    border-bottom: 1px solid #ccc; /* Adjust color/thickness as you like */
+  }
+  .last-row td {
+    padding-bottom: 12px;
+  }  
+.trTableFood{
+    border-bottom: none;
+}
+.FlagFood {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    justify-items: center;
+  }
   .pagination {
     display: flex;
     justify-content: center;
