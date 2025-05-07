@@ -51,8 +51,8 @@ const Sidebar = () => {
           alt="Logo" 
         />
         <Link to="/restaurant" className="text-black">
-          <span className="text-[#FD4C2A] font-extrabold text-3xl">Savory</span>
-          <span className="text-white text-3xl">Bites</span>
+          <span className="text-[#FD4C2A] font-extrabold text-2xl">Savory</span>
+          <span className="text-white text-2xl">Bites</span>
         </Link>
       </div>
 

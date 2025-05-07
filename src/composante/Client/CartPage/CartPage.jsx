@@ -170,77 +170,82 @@ function CartPage() {
     <div className="flex flex-col">
     {/* First Part - Tables Container */}
     <div className="flex justify-center w-full gap-5 pt-5">
-      {/* Products Table */}
-      <div className="w-[45%] rounded-2xl overflow-hidden">
-        <Products
-          products={cart}
-          updateQuantity={updateQuantity}
-          removeItem={removeItem}
-        />
-      </div>
+  {/* Products Table */}
+  <div className="w-[45%] rounded-2xl overflow-hidden">
+    <Products
+      products={cart}
+      updateQuantity={updateQuantity}
+      removeItem={removeItem}
+    />
+  </div>
+
+  {/* Total Price Table - Version avec hauteur fixe */}
+  <div className="w-[25%] flex flex-col">
+  <div className="bg-white rounded-2xl overflow-hidden shadow-md flex flex-col" style={{ minHeight: '400px' }}>
+  {/* Header - 1/3 de l'espace */}
+  <div className="bg-[#FD4C2A] p-3 text-xl text-center text-white font-bold flex items-center justify-center h-[18%]">
+    Cart Total
+  </div>
   
-      {/* Total Price Table */}
-      <table className="w-[25%] rounded-2xl overflow-hidden">
-        <thead>
-          <tr className="bg-[#FD4C2A]">
-            <th colSpan={2} className="p-4 text-xl text-center">Cart Total</th>
-          </tr>
-        </thead>
-        <tbody className="[&_td]:p-3 [&_td]:text-center">
-          <tr>
-            <td>Subtotal</td>
-            <td className="tdOrderDetails1" colSpan={2}>
-              {cart.reduce((sum, item) => sum + item.food.discountedPrice * item.quantity, 0).toFixed(2)} MAD
-            </td>
-          </tr>
-          <tr>
-            <td>Shipping</td>
-            <td className="tdOrderDetails1" colSpan={2}>
-              {cart.reduce((sum, item) => {
-                if (item.food && item.food.restaurant) {
-                  const restaurantId = item.food.restaurant.id;
-                  if (!sum.restaurants[restaurantId]) {
-                    sum.restaurants[restaurantId] = item.food.restaurant.shippingFees;
-                    sum.total += item.food.restaurant.shippingFees;
-                  }
+  {/* Content - 1/3 de l'espace */}
+  <div className="flex-1 flex flex-col justify-center p-4 h-[40%]">
+    <div className="space-y-6">
+      <div className="flex justify-between items-center h-[30%]">
+        <span className="text-gray-700">Subtotal:</span>
+        <span className="font-medium">
+          {cart.reduce((sum, item) => sum + item.food.discountedPrice * item.quantity, 0).toFixed(2)} MAD
+        </span>
+      </div>
+      
+      <div className="flex justify-between items-center h-[30%]">
+        <span className="text-gray-700">Shipping:</span>
+        <span className="font-medium">
+          {cart.reduce((sum, item) => {
+            if (item.food?.restaurant) {
+              const restaurantId = item.food.restaurant.id;
+              if (!sum.restaurants[restaurantId]) {
+                sum.restaurants[restaurantId] = item.food.restaurant.shippingFees;
+                sum.total += item.food.restaurant.shippingFees;
+              }
+            }
+            return sum;
+          }, { restaurants: {}, total: 0 }).total.toFixed(2)} MAD
+        </span>
+      </div>
+      
+      <div className="flex justify-between items-center h-[40%] font-bold text-lg pt-2">
+        <span className="text-gray-800">Total:</span>
+        <span className="text-[#FD4C2A]">
+          {(
+            cart.reduce((sum, item) => sum + item.totalPrice, 0) + 
+            cart.reduce((sum, item) => {
+              if (item.food?.restaurant) {
+                const restaurantId = item.food.restaurant.id;
+                if (!sum.restaurants[restaurantId]) {
+                  sum.restaurants[restaurantId] = item.food.restaurant.shippingFees;
+                  sum.total += item.food.restaurant.shippingFees;
                 }
-                return sum;
-              }, { restaurants: {}, total: 0 }).total.toFixed(2)} MAD
-            </td>
-          </tr>
-          <tr>
-            <td>Total</td>
-            <td className="tdOrderDetails1" colSpan={2}>
-              {(
-                cart.reduce((sum, item) => sum + item.totalPrice, 0) + 
-                cart.reduce((sum, item) => {
-                  if (item.food && item.food.restaurant) {
-                    const restaurantId = item.food.restaurant.id;
-                    if (!sum.restaurants[restaurantId]) {
-                      sum.restaurants[restaurantId] = item.food.restaurant.shippingFees;
-                      sum.total += item.food.restaurant.shippingFees;
-                    }
-                  }
-                  return sum;
-                }, { restaurants: {}, total: 0 }).total
-              ).toFixed(2)} MAD
-            </td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td className="bg-[#FD4C2A] text-white p-3 text-center" colSpan="2">
-              <button 
-                onClick={handlePlaceOrder}
-                className="w-full py-2 font-medium text-white"
-              >
-                Place Order
-              </button>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
+              }
+              return sum;
+            }, { restaurants: {}, total: 0 }).total
+          ).toFixed(2)} MAD
+        </span>
+      </div>
     </div>
+  </div>
+
+  {/* Button - 1/3 de l'espace */}
+  <div className="mt-3 p-6 flex items-center justify-center h-[30%]">
+    <button 
+      onClick={handlePlaceOrder}
+      className="w-full py-4 bg-[#FD4C2A] text-white font-bold rounded-lg hover:bg-[#e04123] transition-colors shadow-md"
+    >
+      Place Order
+    </button>
+  </div>
+</div>
+  </div>
+</div>
   
     {/* Second Part - Recommendations */}
     <div className="mt-8 p-8 bg-[#fdf4f4] border-t-2 border-[#f3c1b8]">

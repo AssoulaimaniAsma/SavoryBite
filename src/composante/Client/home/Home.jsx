@@ -15,7 +15,7 @@ import back6 from "../../../image/pizza2.png";
 import ButtonWithLogo from "../ButtonWithLogo/ButtonWithLogo";
 import { FiChevronDown } from "react-icons/fi";
 import Mcdo from "../../../image/mcdo.png";
-import logo from "../../../image/favicon.png";
+import logo from "./logoo.png";
 import { useNavigate,Link } from "react-router-dom";
 import { CartContext } from "../CartContext/CartContext";
 import axios from "axios";
@@ -195,7 +195,7 @@ const [showModal2, setShowModal2] = useState(false);
         </h1>
 
         {/* Texte descriptif */}
-        <div className="adtext">
+        <div className="adtext z-100">
           <p className="adtext1">
             Craving something delicious? With SavoryBites, you
           </p>
@@ -240,9 +240,8 @@ const [showModal2, setShowModal2] = useState(false);
         </div>
       </div>
 
-      <img className="backgroundimg1" src={back1} alt="Burger background" />
-      <img className="backgroundimg2" src={back2} alt="Pizza background" />
-
+      <img className="w-2/5 h-auto -ml-[10%] -mt-[20%] absolute blur-sm" src={back1} alt="Burger background" />
+      <img className="w-2/5 h-[50%] ml-[70%] -mt-[25%] absolute blur-sm" src={back2} alt="Pizza background" />
      <div className="section2">
         <h2 id="h2content">ON SALE</h2>
         <div id="imageContent">
@@ -292,9 +291,9 @@ const [showModal2, setShowModal2] = useState(false);
   
 <>
         <h2 id="h2content3">View Our Range Of Categories</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-[30px] p-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[30px] p-8 z-10">
           {/* Burgers & Fast Food */}
-          <div className="relative pl-[11%]" onClick={() => navigate(`/client/Our_Menu`)}>
+          <div className="relative pl-[11%] z-10" onClick={() => navigate(`/client/Our_Menu`)}>
             <img
               className="w-full h-[100%] object-cover rounded-lg"
               src={categories[0].categoryImage}
@@ -371,9 +370,11 @@ const [showModal2, setShowModal2] = useState(false);
         </div>
       </div>
 
-      <img className="backgroundimg4" src={back4} alt="French fries" />
-      <img className="backgroundimg5" src={back5} alt="Sauce" />
-
+      <img 
+    className="w-[40%] h-auto -ml-[14%] -mt-[56%] absolute blur-sm z-0" 
+    src={back4} 
+    alt="French fries" 
+  />
       <div  className="Section5">
         <h2 id="h2content2">Most Popular Restaurants</h2>
         <ButtonWithLogo />
@@ -416,20 +417,19 @@ const [showModal2, setShowModal2] = useState(false);
         </div>
       </div>
 
-      <footer className="fotterPage ">
+      <footer className="fotterPage bg-[#2E2E2E] ">
         <div className="grid grid-cols-2 lg:grid-cols-4 2xl:grid-cols-6 gap-8 py-10 ">
           <div className="col-span-full mb-10 2xl:col-span-2 lg:mb-0 flex items-center flex-col 2xl:items-start">
-            <img
-              className="mcdoLogo w-20 h-15 mb-4"
-              src={logo}
-              alt="McDonald's Logo"
-            />
-            <Link to="/" className="text-2xl font-bold">
-              <span className="text-[#FD4C2A]">Savory</span>Bites
-            </Link>
+          <img
+  className="w-[1400px] h-[200px] object-contain "
+  src={logo}
+  alt="McDonald's Logo"
+/>
+
+           
             <div className="flex items-center justify-between w-full max-w-xl mx-auto flex-col  2xl:flex-col 2xl:items-start">
-              <p className="py-8 text-sm text-gray-500 lg:max-w-xs text-center lg:text-left">
-                Trusted by food lovers across the globe. Need help? We're here
+              <p className="py-8 text-sm text-gray-200 lg:max-w-xs text-center lg:text-left">
+                Trusted by food lovers across the globe. <br></br>Need help? We're here
                 to help!
               </p>
               <Link
@@ -441,113 +441,11 @@ const [showModal2, setShowModal2] = useState(false);
             </div>
           </div>
 
-          <div className="lg:mx-auto text-left">
-            <h4 className="titleLink">SavoryBites</h4>
-            <ul className="text-sm  transition-all duration-500 ">
-              <li className="mb-6">
-                <a href="" className="link">
-                  Home
-                </a>
-              </li>
-              <li className="mb-6">
-                <a href="" className="link">
-                  About
-                </a>
-              </li>
-              <li className="mb-6">
-                <a href="" className="link">
-                  Pricing
-                </a>
-              </li>
-              <li>
-                <a href="" className="link">
-                  Features
-                </a>
-              </li>
-            </ul>
-          </div>
 
-          <div className="lg:mx-auto text-left">
-            <h4 className="titleLink">Products</h4>
-            <ul className="text-sm  transition-all duration-500">
-              <li className="mb-6">
-                <a href="" className="link">
-                  Figma UI System
-                </a>
-              </li>
-              <li className="mb-6">
-                <a href="" className="link">
-                  Icons Assets
-                </a>
-              </li>
-              <li className="mb-6">
-                <a href="" className="link">
-                  Responsive Blocks
-                </a>
-              </li>
-              <li>
-                <a href="" className="link">
-                  Components Library
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="lg:mx-auto text-left">
-            <h4 className="titleLink">Resources</h4>
-            <ul className="text-sm  transition-all duration-500">
-              <li className="mb-6">
-                <a href="" className="link">
-                  FAQs
-                </a>
-              </li>
-              <li className="mb-6">
-                <a href="" className="link">
-                  Quick Start
-                </a>
-              </li>
-              <li className="mb-6">
-                <a href="" className="link">
-                  Documentation
-                </a>
-              </li>
-              <li>
-                <a href="" className="link">
-                  User Guide
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="lg:mx-auto text-left">
-            <h4 className="titleLink">Blogs</h4>
-            <ul className="text-sm  transition-all duration-500">
-              <li className="mb-6">
-                <a href="" className="link">
-                  News
-                </a>
-              </li>
-              <li className="mb-6">
-                <a href="" className="link">
-                  Tips & Tricks
-                </a>
-              </li>
-              <li className="mb-6">
-                <a href="" className="link">
-                  New Updates
-                </a>
-              </li>
-              <li>
-                <a href="" className="link">
-                  Events
-                </a>
-              </li>
-            </ul>
-          </div>
         </div>
 
         <div className="final_part">
-          <p className="copyright">
+          <p className="copyright text-white">
             &copy; 2025 SavoryBites. All rights reserved.
           </p>
         </div>

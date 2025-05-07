@@ -190,7 +190,6 @@ function TabClient() {
                 <table className="w-full text-left">
                     <thead>
                         <tr className="bg-[#FD4C2A] text-white">
-                            <th className="px-4 py-3 font-semibold text-center">UserID</th>
                             <th className="px-4 py-3 font-semibold text-center">Profile Image</th>
                             <th className="px-4 py-3 font-semibold text-center">User Name</th>
                             <th className="px-4 py-3 font-semibold text-center">First Name</th>
@@ -205,7 +204,7 @@ function TabClient() {
                     <tbody>
                         {currentClients.map((client) => (
                             <tr key={client.id} className="hover:bg-gray-100 even:bg-gray-50">
-                                <td className="px-4 py-3 border-b border-gray-200 text-center">{client.id}</td>
+                                
                                 <td className="px-4 py-3 border-b border-gray-200">
                                     <img
                                         src={client.profileImg}
