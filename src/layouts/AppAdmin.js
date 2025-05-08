@@ -6,7 +6,7 @@ import SideBar from "../composante/Admin/SideBar/SideBar";
 import Signin from "../composante/Admin/Signin/Signin";
 import Food from "../composante/Admin/Food/Food";
 import Dashboard from "../composante/Admin/Dashboard/Dashboard";
-//import IncomingNotif from "../composante/Admin/IncomingNotif/IncomingNotif";
+import IncomingNotif from "../composante/Admin/IncomingNotif/IncomingNotif";
 
 function AppAdmin() {
   const location = useLocation();
@@ -18,7 +18,7 @@ function AppAdmin() {
   return (
     <div style={{ display: "flex" }}>
       {showSidebar && <SideBar />}
-      
+      <IncomingNotif/>
       <div style={{ flex: 1 }}>
         <Routes>
           <Route path="/admin/Signin" element={<Signin/>}/>

@@ -126,7 +126,7 @@ export default function IncomingNotifications() {
                       ))}
                     </td>
                     <td className="p-4 font-bold flex items-center gap-2">
-                      <FaRegMoneyBill1 className="text-[#FD4C2A]" />
+                     
                       {order.totalPrice}
                     </td>
                     <td className="p-4 text-center">

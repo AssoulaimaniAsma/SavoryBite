@@ -79,6 +79,29 @@ const [profileBannerUrl, setProfileBannerUrl] = useState("");
       fetchAddress();
     }
   }, [token]);
+  const handleRedirect = async () => {
+    try {
+      const token = localStorage.getItem("authToken"); // Ou depuis ton contexte/auth provider
+
+      const response = await fetch("http://localhost:8080/restaurant/stripeAccountLink", {
+        method: "GET",
+        headers: {
+         // "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.text();
+      console.log("Stripe account link response:", data); // Log the response for debugging
+      if (data) {
+        window.location.href = data; // Redirige vers le lien Stripe
+      } else {
+        console.error("URL not found in response");
+      }
+    } catch (error) {
+      console.error("Failed to fetch Stripe account link:", error);
+    }
+  };
 
   // Load regions on mount
   useEffect(() => {
@@ -129,7 +152,7 @@ const [profileBannerUrl, setProfileBannerUrl] = useState("");
         if (!res.ok) throw new Error("Failed to fetch");
 
         const user = await res.json();
-
+        console.log(user);
         setFormData({
           title: user.title || "",
           contactEmail: user.contactEmail || "",
@@ -462,7 +485,7 @@ setProfileBannerUrl(user.profileBanner || "");
       </div>
 
       <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-        {["title", "contactEmail", "paypalEmail", "email", "phone"].map((field) => (
+        {["title", "contactEmail","email", "phone"].map((field) => (
           <div key={field}>
             <label className="text-gray-600 capitalize font-bold">{field}</label>
             <input
@@ -652,11 +675,11 @@ setProfileBannerUrl(user.profileBanner || "");
       </div>
 
       <div className="Payment">
-        <span className="text-gray-600 font-bold">Payment</span>
-        <Link to="/Payment-form" className="PaymentLink">
-          Manage Stripe Connect Account 
-        </Link>
-      </div>
+      <span className="text-gray-600 font-bold">Payment</span>
+      <button onClick={handleRedirect} className="PaymentLink text-sm text-[#FD4C2A] underline ml-2">
+        Manage Stripe Connect Account
+      </button>
+    </div>
 
       {isEditable && (
         <div className="mt-6 text-right">

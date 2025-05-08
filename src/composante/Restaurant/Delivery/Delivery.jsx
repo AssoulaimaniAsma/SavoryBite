@@ -251,7 +251,7 @@ export default function Delivery() {
   };
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
+    <div className="ml-4 mr-4 mt-6 w-full mx-auto">
       {showAlert && (
         <div className="fixed z-50 top-4 left-1/2 transform -translate-x-1/2 w-fit">
           <div className="flex items-center p-4 text-sm text-black rounded-lg bg-[#f0b9ae] shadow-lg">
@@ -319,15 +319,15 @@ export default function Delivery() {
 
       {/* Table */}
       <div className=" mt-10 overflow-x-auto rounded-2xl shadow">
-        <table className=" min-w-full text-left overflow-hidden">
+        <table className=" w-[90%] text-left overflow-hidden">
           <thead className="bg-[#FD4C2A] text-white rounded-t-2xl">
             <tr>
               <th className="p-4 rounded-tl-2xl">Image</th>
-              <th className="p-4">Full Name</th>
-              <th className="p-4">Email</th>
-              <th className="p-4">Phone</th>
-              <th className="p-4">Status</th>
-              <th className="p-4 rounded-tr-2xl">Actions</th>
+              <th className="p-4 ">Full Name</th>
+              <th className="p-4 ">Email</th>
+              <th className="p-4  ">Phone</th>
+              <th className="p-4 ">Status</th>
+              <th className="p-4 rounded-tr-2xl ">Actions</th>
             </tr>
           </thead>
           <tbody className="bg-white">
