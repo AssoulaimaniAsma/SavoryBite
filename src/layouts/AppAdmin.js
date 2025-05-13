@@ -12,7 +12,7 @@ function AppAdmin() {
   const location = useLocation();
   const path = location.pathname;
 
-  const showSidebar = path.startsWith("/admin") && path !== "/admin/signin" ;
+  const showSidebar = path.startsWith("/admin/") && path !== "/admin/signin" ;
 
 
   return (
