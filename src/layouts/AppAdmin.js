@@ -21,8 +21,8 @@ function AppAdmin() {
       <IncomingNotif/>
       <div style={{ flex: 1 }}>
         <Routes>
-          <Route path="/admin/Signin" element={<Signin/>}/>
-          <Route path="/admin" element={<TabOrders />} />
+          <Route path="/admin" element={<Signin/>}/>
+         
           <Route path="/admin/TabOrders" element={<TabOrders />} />
           <Route path="/admin/Tabclient" element={<TabClient />} />
           <Route path="/admin/TabRestaurant" element={<TabRestaurant />} />
