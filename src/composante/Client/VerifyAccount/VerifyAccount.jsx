@@ -29,7 +29,7 @@ export default function VerifyAccount() {
         if (res.status === 200 || res.status === 409) {
 
           setStatus("success");
-          setTimeout(() => navigate("/signin"), 5000);
+          setTimeout(() => navigate("/client/signin"), 5000);
         } else {
           setStatus("error");
         }

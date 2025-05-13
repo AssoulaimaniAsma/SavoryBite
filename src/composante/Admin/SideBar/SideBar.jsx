@@ -50,7 +50,7 @@ const Sidebar = () => {
           className="w-20 h-auto mr-1" 
           alt="Logo" 
         />
-        <Link to="/restaurant" className="text-black">
+        <Link to="/admin/TabOrders" className="text-black">
           <span className="text-[#FD4C2A] font-extrabold text-2xl">Savory</span>
           <span className="text-white text-2xl">Bites</span>
         </Link>

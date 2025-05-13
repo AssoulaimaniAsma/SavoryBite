@@ -47,7 +47,7 @@ function Signin() {
         console.log("Token reçu:", data.jwt);
         localStorage.setItem("authToken", data.jwt);
         localStorage.setItem("role","admin");
-        navigate("/admin");
+        navigate("/admin/TabOrders");
       } else {
         const errorData = await response.json();
         console.error("Erreur de connexion:", errorData);
