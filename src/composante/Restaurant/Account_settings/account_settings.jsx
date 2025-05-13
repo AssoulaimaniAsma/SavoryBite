@@ -215,13 +215,14 @@ setProfileBannerUrl(user.profileBanner || "");
   };
 
   const handleSaveChanges = async () => {
-    if (!validateForm()) return;
-
+    console.log("ANaaa dkheelt");
+   // if (!validateForm()) return;
+    
     if (!token) return navigate("/restaurant/SigninRestaurant");
 
     const formDataToSend = {
       title: formData.title,
-      paypalEmail: formData.paypalEmail,
+      //paypalEmail: formData.paypalEmail,
       contactEmail: formData.contactEmail,
       email: formData.email,
       phone: formData.phone,
@@ -235,6 +236,7 @@ setProfileBannerUrl(user.profileBanner || "");
     if (profileBannerUrl) {
       formDataToSend.profileBanner = profileBannerUrl;
     }
+    console.log("Form data to send:", formDataToSend);
     try {
       const res = await fetch("http://localhost:8080/restaurant/updateAccountDetails", {
         method: "POST",
@@ -244,7 +246,7 @@ setProfileBannerUrl(user.profileBanner || "");
         },
         body: JSON.stringify(formDataToSend),
       });
-
+      console.log("Response:", res);
       const text = await res.text();
       let data;
       try {
@@ -681,16 +683,19 @@ setProfileBannerUrl(user.profileBanner || "");
       </button>
     </div>
 
-      {isEditable && (
-        <div className="mt-6 text-right">
-          <button
-            onClick={handleSaveChanges}
-            className="px-6 py-2 text-white bg-[#FD4C2A] rounded-[25px] w-full"
-          >
-            Save Changes
-          </button>
-        </div>
-      )}
+    {isEditable && (
+  <form onSubmit={(e) => {
+    e.preventDefault();
+    handleSaveChanges();
+  }} className="mt-6 text-right">
+    <button
+      type="submit"
+      className="px-6 py-2 text-white bg-[#FD4C2A] rounded-[25px] w-full"
+    >
+      Save Changes
+    </button>
+  </form>
+)}
     </div>
   );
 };
