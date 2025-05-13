@@ -15,7 +15,7 @@ function RoutesManager() {
   if (path.startsWith("/client")) return <AppClient />;
   if (path.startsWith("/admin")) return <AppAdmin />;
   if (path.startsWith("/auth")) return <AppClient />;
-  
+  if (path.startsWith("/choose-role")) return <ChooseRole />;
   // Page d’accueil générale
   return <AppClient />;
 }
