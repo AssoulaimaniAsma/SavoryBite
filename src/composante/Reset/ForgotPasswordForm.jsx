@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import logo from "../../image/favicon.png";
+import logo from "../../image/logoo.png";
 
 const ForgotPasswordForm = () => {
   const [email, setEmail] = useState('');
@@ -34,10 +34,8 @@ const ForgotPasswordForm = () => {
     <section className="bg-gray-50 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <div className="flex items-center space-x-2 font-bold mt-10 mb-10">
-        <img src={logo} className="w-12 h-12" alt="Logo" />
-        <Link to="/" className="text-black text-3xl">
-          <span className="text-[#FD4C2A] font-extrabold">Savory</span>Bites
-        </Link>
+        <img src={logo} className="w-[500px] h-48" alt="Logo" />
+        
       </div>
       <div className="w-full p-6 bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md dark:bg-gray-800 dark:border-gray-700 sm:p-8">
           <h1 className="mb-1 text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
